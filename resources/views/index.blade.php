@@ -39,37 +39,11 @@
             <!-- /.card -->
           </div>
           <div class="col-12 col-sm-6 col-md-4">
-            <div class="info-box">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Jurusan</span>
-                <span class="info-box-number">9</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-4">
-            <div class="info-box mb-3">
-              <span class="info-box-icon bg-info elevation-1"><i class="fas fa-thumbs-up"></i></span>
-
-              <div class="info-box-content">
-                <span class="info-box-text">Prodi</span>
-                <span class="info-box-number">18</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-4">
             <div class="info-box mb-3">
               <span class="info-box-icon bg-success elevation-1"><i class="fas fa-users"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Mahasiswa</span>
+                <span class="info-box-text">Alumni</span>
                 <span class="info-box-number">567.000</span>
               </div>
               <!-- /.info-box-content -->
@@ -77,6 +51,32 @@
             <!-- /.info-box -->
           </div>
           <!-- ./col -->
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="info-box mb-3">
+              <span class="info-box-icon bg-primary elevation-1"><i class="fas fa-users"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Alumni Mengisi Angket</span>
+                <span class="info-box-number">500.000</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- ./col -->
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="info-box">
+              <span class="info-box-icon bg-secondary elevation-1"><i class="fas fa-users"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Alumni Belum Mengisi Angket</span>
+                <span class="info-box-number">67.000</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+          <!-- /.col -->
           <div class="col-md-6">
             <!-- AREA CHART -->
             <div class="card">
@@ -96,22 +96,6 @@
             </div>
             <!-- /.card -->
           </div>
-          <div class="col-md-6">
-            <!-- DONUT CHART -->
-            <div class="card">
-              <div class="card-header">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h3 class="card-title">Data Mahasiswa FTI 2022</h3>
-
-                    <a href="#" class="btn btn-sm btn-success">Lihat Semua</a>
-                </div>
-              </div>
-              <div class="card-body">
-                <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
           </div>
         </div>
       </div>
@@ -183,34 +167,6 @@
         type: 'line',
         data: areaChartData,
         options: areaChartOptions
-        })
-
-        var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
-        var donutData        = {
-            labels: [
-                'Teknik Informatika',
-                'Sistem Komputer',
-            ],
-            datasets: [
-                {
-                data: [600,300],
-                backgroundColor : ['#3c8dbc', '#00c0ef'],
-                }
-            ]
-        }
-        var donutOptions     = {
-            maintainAspectRatio : false,
-            responsive : true,
-            legend: {
-                position: 'bottom'
-            }
-        }
-        //Create pie or douhnut chart
-        // You can switch between pie and douhnut using the method below.
-        new Chart(donutChartCanvas, {
-            type: 'pie',
-            data: donutData,
-            options: donutOptions
         })
     </script>
 @endpush

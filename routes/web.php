@@ -20,3 +20,25 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('index');
 });
+
+Route::get('/master-data/alumni', function () {
+    return view('master.alumni');
+});
+
+Route::get('/tracer-study/data', function () {
+    return view('tracer.index');
+});
+Route::get('/tracer-study/angket', function () {
+    return view('tracer.angket');
+});
+
+Route::get('/laporan/alumni', function () {
+    return view('laporan.alumni');
+});
+Route::get('/laporan/tracer-study', function () {
+    return view('laporan.tracer');
+});
+
+Route::get('/setting/profile', function () {
+    return view('setting.profile');
+});
