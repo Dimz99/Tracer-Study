@@ -1,115 +1,89 @@
-  <aside class="main-sidebar main-sidebar-custom sidebar-dark-success elevation-4 dark-mode">
-    <!-- Brand Logo -->
-    <a href="/dashboard" class="brand-link">
-      <img src="../../dist/img/unisba.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-bold text-success">Tracer Study</span>
-    </a>
+      <aside class="js-navbar-vertical-aside navbar navbar-vertical-aside navbar-vertical navbar-vertical-fixed navbar-expand-xl navbar-bordered  ">
+        <div class="navbar-vertical-container">
+          <div class="navbar-vertical-footer-offset">
+            <div class="navbar-brand-wrapper justify-content-between">
+              <!-- Logo -->
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+
+                <a class="navbar-brand" href="/dashboard" aria-label="Front">
+                  <img class="navbar-brand-logo" src="{{ asset('/assets/svg/logos/logo.svg') }}" alt="Logo">
+                  <img class="navbar-brand-logo-mini" src="{{ asset('/assets/svg/logos/logo-short.svg') }}" alt="Logo">
+                </a>
+
+              <!-- End Logo -->
+
+              <!-- Navbar Vertical Toggle -->
+              <button type="button" class="js-navbar-vertical-aside-toggle-invoker navbar-vertical-aside-toggle btn btn-icon btn-xs btn-ghost-dark">
+                <i class="tio-clear tio-lg"></i>
+              </button>
+              <!-- End Navbar Vertical Toggle -->
+            </div>
+
+            <!-- Content -->
+            <div class="navbar-vertical-content">
+              <ul class="navbar-nav navbar-nav-lg nav-tabs">
+                <li class="nav-item">
+                  <small class="nav-subtitle" title="Main">Main</small>
+                  <small class="tio-more-horizontal nav-subtitle-replacer"></small>
+                </li>
+
+                <!-- Dashboards -->
+                <li class="nav-item active">
+                  <a class="js-nav-tooltip-link nav-link active" href="/dashboard" title="Dashboards">
+                    <i class="tio-home-vs-1-outlined nav-icon"></i>
+                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Dashboards</span>
+                  </a>
+                </li>
+                <!-- End Dashboards -->
+
+                <li class="nav-item">
+                  <small class="nav-subtitle" title="Data">Data</small>
+                  <small class="tio-more-horizontal nav-subtitle-replacer"></small>
+                </li>
+
+                <!-- Data Mahasiswa & Alumni -->
+                <li class="navbar-vertical-aside-has-menu ">
+                  <a class="js-nav-tooltip-link nav-link " href="javascript:;" title="Alumin">
+                    <i class="tio-apps nav-icon"></i>
+                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Alumin</span>
+                  </a>
+                </li>
+                <!-- End Data Mahasiswa & Alumni -->
+
+                <!-- Tracer Study -->
+                <li class="navbar-vertical-aside-has-menu ">
+                  <a class="js-nav-tooltip-link nav-link " href="javascript:;" title="Tracer Study">
+                    <i class="tio-lock-outlined nav-icon"></i>
+                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Tracer Study</span>
+                  </a>
+                </li>
+                <!-- End Tracer Study -->
+
+                <li class="nav-item">
+                  <small class="nav-subtitle" title="Report">Report</small>
+                  <small class="tio-more-horizontal nav-subtitle-replacer"></small>
+                </li>
+
+                <!-- Data Mahasiswa & Alumni -->
+                <li class="navbar-vertical-aside-has-menu ">
+                  <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle " href="javascript:;" title="Data">
+                    <i class="tio-apps nav-icon"></i>
+                    <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">Report</span>
+                  </a>
+
+                  <ul class="js-navbar-vertical-aside-submenu nav nav-sub">
+                    <li class="nav-item">
+                      <a class="nav-link " href="#" title="Kanban">
+                        <span class="tio-circle nav-indicator-icon"></span>
+                        <span class="text-truncate">Statistik Mahasiswa</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <!-- End Data Mahasiswa & Alumni -->
+              </ul>
+            </div>
+            <!-- End Content -->
+          </div>
         </div>
-        <div class="info">
-          <a href="#" class="d-block">Super Admin</a>
-        </div>
-      </div>
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="/dashboard" class="nav-link active">
-              <i class="fas fa-tachometer-alt nav-icon"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Fakultas
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Teknologi Informasi</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Alumni
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>FTI</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
-              <p>
-                Tracer Study
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Jawaban !</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-cog"></i>
-              <p>
-                Setting
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Profile</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-
-    <div class="sidebar-custom">
-      <a href="#" class="btn btn-danger btn-block"><i class="fas fa-sign-out-alt"></i>Log Out</a>
-    </div>
-    <!-- /.sidebar-custom -->
-  </aside>
+      </aside>

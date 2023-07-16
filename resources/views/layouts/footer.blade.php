@@ -1,7 +1,7 @@
-
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.2.0
-    </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io" class="text-success">AdminLTE.io</a>.</strong> All rights reserved.
-  </footer>
+			<div class="footer">
+				<div class="row justify-content-between align-items-center">
+					<div class="col">
+						<p class="font-size-sm mb-0">&copy; Front. <span class="d-none d-sm-inline-block">2020 Htmlstream.</span></p>
+					</div>
+				</div>
+			</div>
