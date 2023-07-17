@@ -13,14 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/dashboard');
-});
+Route::get('/', function () { return redirect('/dashboard'); });
 
-Route::get('/dashboard', function () {
-    return view('index');
-});
+Route::get('/dashboard', function () { return view('users.index'); });
 
-Route::get('/data/alumni', function () {
-    return view('alumni.index');
-});
+Route::get('/data/alumni', function () { return view('alumni.index'); });

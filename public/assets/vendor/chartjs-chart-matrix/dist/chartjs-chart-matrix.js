@@ -1,149 +1,274 @@
 /*!
- * chartjs-chart-matrix v0.1.3
- * https://github.com/kurkle/chartjs-chart-matrix#readme
- * (c) 2019 Jukka Kurkela
+ * chartjs-chart-matrix v1.1.1
+ * https://chartjs-chart-matrix.pages.dev/
+ * (c) 2021 Jukka Kurkela
  * Released under the MIT license
  */
 (function (global, factory) {
-typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('chart.js')) :
-typeof define === 'function' && define.amd ? define(['chart.js'], factory) :
-(global = global || self, factory(global.Chart));
-}(this, function (Chart) { 'use strict';
+typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('chart.js'), require('chart.js/helpers')) :
+typeof define === 'function' && define.amd ? define(['chart.js', 'chart.js/helpers'], factory) :
+(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.Chart, global.Chart.helpers));
+})(this, (function (Chart, helpers) { 'use strict';
 
-Chart = Chart && Chart.hasOwnProperty('default') ? Chart['default'] : Chart;
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-var resolve = Chart.helpers.options.resolve;
+var Chart__default = /*#__PURE__*/_interopDefaultLegacy(Chart);
 
-var Controller = Chart.DatasetController.extend({
+var version = "1.1.1";
 
-	dataElementType: Chart.elements.Rectangle,
+class MatrixController extends Chart.DatasetController {
+  initialize() {
+    this.enableOptionSharing = true;
+    super.initialize();
+  }
 
-	update: function(reset) {
-		var me = this;
-		var meta = me.getMeta();
-		var data = meta.data || [];
-		var i, ilen;
+  update(mode) {
+    const me = this;
+    const meta = me._cachedMeta;
 
-		me._xScale = me.getScaleForId(meta.xAxisID);
-		me._yScale = me.getScaleForId(meta.yAxisID);
+    me.updateElements(meta.data, 0, meta.data.length, mode);
+  }
 
-		for (i = 0, ilen = data.length; i < ilen; ++i) {
-			me.updateElement(data[i], i, reset);
-		}
-	},
+  updateElements(rects, start, count, mode) {
+    const me = this;
+    const reset = mode === 'reset';
+    const {xScale, yScale} = me._cachedMeta;
+    const firstOpts = me.resolveDataElementOptions(start, mode);
+    const sharedOptions = me.getSharedOptions(mode, rects[start], firstOpts);
 
-	updateElement: function(item, index, reset) {
-		var me = this;
-		var dataset = me.getDataset();
-		var datasetIndex = me.index;
-		var value = dataset.data[index];
-		var xScale = me._xScale;
-		var yScale = me._yScale;
-		var options = me._resolveElementOptions(item, index);
-		var x = reset ? xScale.getBasePixel() : xScale.getPixelForValue(value, index, datasetIndex);
-		var y = reset ? yScale.getBasePixel() : yScale.getPixelForValue(value, index, datasetIndex);
-		var h = options.height;
-		var w = options.width;
-		var halfH = h / 2;
+    for (let i = start; i < start + count; i++) {
+      const parsed = !reset && me.getParsed(i);
+      const x = reset ? xScale.getBasePixel() : xScale.getPixelForValue(parsed.x);
+      const y = reset ? yScale.getBasePixel() : yScale.getPixelForValue(parsed.y);
+      const options = me.resolveDataElementOptions(i, mode);
+      const {width, height, anchorX, anchorY} = options;
+      const properties = {
+        x: resolveX(anchorX, x, width),
+        y: resolveY(anchorY, y, height),
+        width,
+        height,
+        options
+      };
+      me.updateElement(rects[i], i, properties, mode);
+    }
 
-		item._xScale = xScale;
-		item._yScale = yScale;
-		item._options = options;
-		item._datasetIndex = datasetIndex;
-		item._index = index;
+    me.updateSharedOptions(sharedOptions, mode);
+  }
 
-		item._model = {
-			x: x,
-			base: y - halfH,
-			y: y + halfH,
-			width: w,
-			height: h,
-			backgroundColor: options.backgroundColor,
-			borderColor: options.borderColor,
-			borderSkipped: options.borderSkipped,
-			borderWidth: options.borderWidth
-		};
+  draw() {
+    const me = this;
+    const data = me.getMeta().data || [];
+    let i, ilen;
 
-		item.pivot();
-	},
+    for (i = 0, ilen = data.length; i < ilen; ++i) {
+      data[i].draw(me._ctx);
+    }
+  }
+}
 
-	draw: function() {
-		var me = this;
-		var data = me.getMeta().data || [];
-		var i, ilen;
+function resolveX(anchorX, x, width) {
+  if (anchorX === 'left' || anchorX === 'start') {
+    return x;
+  }
+  if (anchorX === 'right' || anchorX === 'end') {
+    return x - width;
+  }
+  return x - width / 2;
+}
 
-		for (i = 0, ilen = data.length; i < ilen; ++i) {
-			data[i].draw();
-		}
-	},
+function resolveY(anchorY, y, height) {
+  if (anchorY === 'top' || anchorY === 'start') {
+    return y;
+  }
+  if (anchorY === 'bottom' || anchorY === 'end') {
+    return y - height;
+  }
+  return y - height / 2;
+}
 
-	/**
-	 * @private
-	 */
-	_resolveElementOptions: function(rectangle, index) {
-		var me = this;
-		var chart = me.chart;
-		var datasets = chart.data.datasets;
-		var dataset = datasets[me.index];
-		var options = chart.options.elements.rectangle;
-		var values = {};
-		var i, ilen, key;
+MatrixController.id = 'matrix';
 
-		// Scriptable options
-		var context = {
-			chart: chart,
-			dataIndex: index,
-			dataset: dataset,
-			datasetIndex: me.index
-		};
+MatrixController.version = version;
 
-		var keys = [
-			'backgroundColor',
-			'borderColor',
-			'borderSkipped',
-			'borderWidth',
-			'width',
-			'height'
-		];
+MatrixController.defaults = {
+  dataElementType: 'matrix',
 
-		for (i = 0, ilen = keys.length; i < ilen; ++i) {
-			key = keys[i];
-			values[key] = resolve([
-				dataset[key],
-				options[key]
-			], context, index);
-		}
-
-		return values;
-	}
-
-});
-
-Chart.controllers.matrix = Controller;
-Chart.defaults.matrix = {
-	hover: {
-		mode: 'nearest',
-		intersect: true
-	},
-	tooltips: {
-		mode: 'nearest',
-		intersect: true
-	},
-	scales: {
-		xAxes: [{
-			type: 'linear'
-		}],
-		yAxes: [{
-			type: 'linear'
-		}]
-	},
-	elements: {
-		rectangle: {
-			borderSkipped: false,
-			width: 20,
-			height: 20
-		}
-	}
+  animations: {
+    numbers: {
+      type: 'number',
+      properties: ['x', 'y', 'width', 'height']
+    }
+  },
+  anchorX: 'center',
+  anchorY: 'center'
 };
+
+MatrixController.overrides = {
+  interaction: {
+    mode: 'nearest',
+    intersect: true
+  },
+
+  scales: {
+    x: {
+      type: 'linear',
+      offset: true
+    },
+    y: {
+      type: 'linear',
+      reverse: true
+    }
+  },
+};
+
+/**
+ * Helper function to get the bounds of the rect
+ * @param {MatrixElement} rect the rect
+ * @param {boolean} [useFinalPosition]
+ * @return {object} bounds of the rect
+ * @private
+ */
+function getBounds(rect, useFinalPosition) {
+  const {x, y, width, height} = rect.getProps(['x', 'y', 'width', 'height'], useFinalPosition);
+  return {left: x, top: y, right: x + width, bottom: y + height};
+}
+
+function limit(value, min, max) {
+  return Math.max(Math.min(value, max), min);
+}
+
+function parseBorderWidth(rect, maxW, maxH) {
+  const value = rect.options.borderWidth;
+  let t, r, b, l;
+
+  if (helpers.isObject(value)) {
+    t = +value.top || 0;
+    r = +value.right || 0;
+    b = +value.bottom || 0;
+    l = +value.left || 0;
+  } else {
+    t = r = b = l = +value || 0;
+  }
+
+  return {
+    t: limit(t, 0, maxH),
+    r: limit(r, 0, maxW),
+    b: limit(b, 0, maxH),
+    l: limit(l, 0, maxW)
+  };
+}
+
+function boundingRects(rect) {
+  const bounds = getBounds(rect);
+  const width = bounds.right - bounds.left;
+  const height = bounds.bottom - bounds.top;
+  const border = parseBorderWidth(rect, width / 2, height / 2);
+
+  return {
+    outer: {
+      x: bounds.left,
+      y: bounds.top,
+      w: width,
+      h: height
+    },
+    inner: {
+      x: bounds.left + border.l,
+      y: bounds.top + border.t,
+      w: width - border.l - border.r,
+      h: height - border.t - border.b
+    }
+  };
+}
+
+function inRange(rect, x, y, useFinalPosition) {
+  const skipX = x === null;
+  const skipY = y === null;
+  const bounds = !rect || (skipX && skipY) ? false : getBounds(rect, useFinalPosition);
+
+  return bounds
+		&& (skipX || x >= bounds.left && x <= bounds.right)
+		&& (skipY || y >= bounds.top && y <= bounds.bottom);
+}
+
+class MatrixElement extends Chart.Element {
+  constructor(cfg) {
+    super();
+
+    this.options = undefined;
+    this.width = undefined;
+    this.height = undefined;
+
+    if (cfg) {
+      Object.assign(this, cfg);
+    }
+  }
+
+  draw(ctx) {
+    const options = this.options;
+    const {inner, outer} = boundingRects(this);
+    const radius = helpers.toTRBLCorners(options.borderRadius);
+
+    ctx.save();
+
+    if (outer.w !== inner.w || outer.h !== inner.h) {
+      ctx.beginPath();
+      helpers.addRoundedRectPath(ctx, {x: outer.x, y: outer.y, w: outer.w, h: outer.h, radius});
+      helpers.addRoundedRectPath(ctx, {x: inner.x, y: inner.y, w: inner.w, h: inner.h, radius});
+      ctx.fillStyle = options.backgroundColor;
+      ctx.fill();
+      ctx.fillStyle = options.borderColor;
+      ctx.fill('evenodd');
+    } else {
+      ctx.beginPath();
+      helpers.addRoundedRectPath(ctx, {x: inner.x, y: inner.y, w: inner.w, h: inner.h, radius});
+      ctx.fillStyle = options.backgroundColor;
+      ctx.fill();
+    }
+
+    ctx.restore();
+  }
+
+  inRange(mouseX, mouseY, useFinalPosition) {
+    return inRange(this, mouseX, mouseY, useFinalPosition);
+  }
+
+  inXRange(mouseX, useFinalPosition) {
+    return inRange(this, mouseX, null, useFinalPosition);
+  }
+
+  inYRange(mouseY, useFinalPosition) {
+    return inRange(this, null, mouseY, useFinalPosition);
+  }
+
+  getCenterPoint(useFinalPosition) {
+    const {x, y, width, height} = this.getProps(['x', 'y', 'width', 'height'], useFinalPosition);
+    return {
+      x: x + width / 2,
+      y: y + height / 2
+    };
+  }
+
+  tooltipPosition() {
+    return this.getCenterPoint();
+  }
+
+  getRange(axis) {
+    return axis === 'x' ? this.width / 2 : this.height / 2;
+  }
+}
+
+MatrixElement.id = 'matrix';
+MatrixElement.defaults = {
+  backgroundColor: undefined,
+  borderColor: undefined,
+  borderWidth: undefined,
+  borderRadius: 0,
+  anchorX: undefined,
+  anchorY: undefined,
+  width: 20,
+  height: 20
+};
+
+Chart__default["default"].register(MatrixController, MatrixElement);
 
 }));

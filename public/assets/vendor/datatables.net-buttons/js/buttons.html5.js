@@ -772,7 +772,7 @@ var excelStrings = {
 // Ref: section 3.8.30 - built in formatters in open spreadsheet
 //   https://www.ecma-international.org/news/TC45_current_work/Office%20Open%20XML%20Part%204%20-%20Markup%20Language%20Reference.pdf
 var _excelSpecials = [
-	{ match: /^\-?\d+\.\d%$/,               style: 60, fmt: function (d) { return d/100; } }, // Precent with d.p.
+	{ match: /^\-?\d+\.\d%$/,               style: 60, fmt: function (d) { return d/100; } }, // Percent with d.p.
 	{ match: /^\-?\d+\.?\d*%$/,             style: 56, fmt: function (d) { return d/100; } }, // Percent
 	{ match: /^\-?\$[\d,]+.?\d*$/,          style: 57 }, // Dollars
 	{ match: /^\-?£[\d,]+.?\d*$/,           style: 58 }, // Pounds
@@ -783,7 +783,7 @@ var _excelSpecials = [
 	{ match: /^\([\d,]+\.\d{2}\)$/,         style: 62, fmt: function (d) { return -1 * d.replace(/[\(\)]/g, ''); } },  // Negative numbers indicated by brackets - 2d.p.
 	{ match: /^\-?[\d,]+$/,                 style: 63 }, // Numbers with thousand separators
 	{ match: /^\-?[\d,]+\.\d{2}$/,          style: 64 },
-	{ match: /^[\d]{4}\-[\d]{2}\-[\d]{2}$/, style: 67, fmt: function (d) {return Math.round(25569 + (Date.parse(d) / (86400 * 1000)));}} //Date yyyy-mm-dd
+	{ match: /^[\d]{4}\-[01][\d]\-[0123][\d]$/, style: 67, fmt: function (d) {return Math.round(25569 + (Date.parse(d) / (86400 * 1000)));}} //Date yyyy-mm-dd
 ];
 
 
@@ -962,7 +962,7 @@ DataTable.ext.buttons.csvHtml5 = {
 		}
 
 		if ( config.bom ) {
-			output = '\ufeff' + output;
+			output = String.fromCharCode(0xFEFF) + output;
 		}
 
 		_saveAs(
@@ -1098,7 +1098,7 @@ DataTable.ext.buttons.excelHtml5 = {
 				if ( ! cell ) {
 					if ( typeof row[i] === 'number' || (
 						row[i].match &&
-						row[i].match(/^-?\d+(\.\d+)?$/) &&
+						row[i].match(/^-?\d+(\.\d+)?([eE]\-?\d+)?$/) && // Includes exponential format
 						! row[i].match(/^0\d+/) )
 					) {
 						// Detect numbers - don't match numbers with leading zeros

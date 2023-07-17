@@ -1,60 +1,7 @@
 {
-  "_from": "list.js@^1.5.0",
-  "_id": "list.js@1.5.0",
-  "_inBundle": false,
-  "_integrity": "sha1-pMv8goHd78Av2y0wyHSL+uJfvNo=",
-  "_location": "/list.js",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "range",
-    "registry": true,
-    "raw": "list.js@^1.5.0",
-    "name": "list.js",
-    "escapedName": "list.js",
-    "rawSpec": "^1.5.0",
-    "saveSpec": null,
-    "fetchSpec": "^1.5.0"
-  },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/list.js/-/list.js-1.5.0.tgz",
-  "_shasum": "a4cbfc8281ddefc02fdb2d30c8748bfae25fbcda",
-  "_spec": "list.js@^1.5.0",
-  "_where": "/Applications/MAMP/htdocs/front/front-dashboard",
-  "author": {
-    "name": "Jonny Strömberg",
-    "email": "jonny.stromberg@gmail.com",
-    "url": "http://javve.com"
-  },
-  "bugs": {
-    "url": "https://github.com/javve/list.js/issues"
-  },
-  "bundleDependencies": false,
-  "dependencies": {
-    "string-natural-compare": "^2.0.2"
-  },
-  "deprecated": false,
+  "name": "list.js",
+  "version": "2.3.1",
   "description": "The perfect library for lists. Supports search, sort, filters and flexibility. Built to be invisible and work on existing HTML",
-  "devDependencies": {
-    "jest": "^18.1.0",
-    "jquery": "^1.12.0",
-    "jshint": "^2.9.4",
-    "jshint-loader": "^0.8.3",
-    "webpack": "^2.2.0"
-  },
-  "engines": {
-    "node": ">= 0.10.21"
-  },
-  "homepage": "http://listjs.com",
-  "jest": {
-    "coverageDirectory": "./coverage/",
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "src/*.js",
-      "src/utils/*.js"
-    ]
-  },
   "keywords": [
     "list",
     "search",
@@ -64,24 +11,59 @@
     "html",
     "ui"
   ],
+  "author": {
+    "name": "Jonny Strömberg",
+    "email": "jonny.stromberg@gmail.com",
+    "url": "https://javve.com"
+  },
+  "homepage": "https://listjs.com",
+  "repository": "git://github.com/javve/list.js.git",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/javve/list.js/issues"
+  },
+  "dependencies": {
+    "string-natural-compare": "^2.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.7",
+    "@babel/preset-env": "^7.12.7",
+    "babel-loader": "^8.2.1",
+    "jest": "^26.6.3",
+    "jquery": "^3.5.1",
+    "prettier": "^2.2.0",
+    "webpack": "^5.6.0",
+    "webpack-cli": "^4.2.0"
+  },
   "main": "src/index",
-  "name": "list.js",
+  "engines": {
+    "node": "^6.0 || ^8.0 || ^10.0 || ^12.0 || >=14"
+  },
+  "scripts": {
+    "test": "npx jest",
+    "build": "npx webpack",
+    "watch": "npx webpack --watch",
+    "watch-test": "npx jest --watch",
+    "preversion": "npm test && npm run build && cp dist/list.min.js docs/assets/javascripts/list.min.js && cp dist/list.min.js.map docs/assets/javascripts/list.min.js.map && git add dist && git add docs/assets/javascripts",
+    "postversion": "git push --follow-tags origin master && cp package.json docs/_data/pkg.json && git add docs/_data/pkg.json && git commit -m \"pkg.json update\""
+  },
+  "npmName": "list.js",
   "npmFileMap": [
     {
       "basePath": "/dist/",
       "files": [
-        "*.js"
+        "*.js",
+        "*.js.map"
       ]
     }
   ],
-  "npmName": "list.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/javve/list.js.git"
-  },
-  "scripts": {
-    "test": "jest"
-  },
-  "version": "1.5.0"
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/*.js",
+      "src/utils/*.js"
+    ],
+    "testURL": "http://localhost/"
+  }
 }
