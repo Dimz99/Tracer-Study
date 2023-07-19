@@ -5,7 +5,7 @@
     <div class="content container">
         <!-- Page Header -->
         <div class="page-header">
-            <div class="row align-items-end">
+            <div class="row align-items-center">
                 <div class="col-sm mb-2 mb-sm-0">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb breadcrumb-no-gutter">
@@ -19,61 +19,52 @@
             <!-- End Row -->
         </div>
         <!-- End Page Header -->
+
+        <div class="card mb-5 mb-lg-3">
+            <div class="card-body">
+                <h1 class="text-uppercase mb-0 fw-bold text-center">Selamat Datang Di Halaman Tracer Study UNISBA Blitar</h1>
+            </div>
+        </div>
+
         <div class="row row-cols-md-3 row-cols-sm-2 row-cols-1 g-3 mb-3">
             <div class="col">
-                <div class="card card-border-left border-primary shadow-soft h-100">
-                    <div class="card-body d-flex align-items-center">
-                        <i class="tio-user-big-outlined tio-xl text-primary mr-3"></i>
-                        <div class="info-body">
-                            <span class="d-block font-size-sm">Mahasiswa</span>
-                            <div class="d-fle-align-items-center">
-                                <h3 class="mb-0">4.120</h3>
-                            </div>
+                <a href="javascript:;" class="card card-hover-shadow h-100">
+                    <div class="card-body">
+                        <h6 class="card-title text-uppercase">Mahasiswa</h6>
+                        <div class="d-fle-align-items-center">
+                            <h2 class="display-4 mb-0">4.120</h2>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <!-- End Col -->
             <div class="col">
-                <div class="card card-border-left border-primary shadow-soft h-100">
-                    <div class="card-body d-flex align-items-center">
-                        <i class="tio-user-big-outlined tio-xl text-primary mr-3"></i>
-                        <div class="info-body">
-                            <span class="d-block font-size-sm">Fakultas</span>
-                            <div class="d-fle-align-items-center">
-                                <h3 class="mb-0">8</h3>
-                            </div>
+                <a href="javascript:;" class="card card-hover-shadow h-100">
+                    <div class="card-body">
+                        <h6 class="card-title text-uppercase">Fakultas</h6>
+                        <div class="d-fle-align-items-center">
+                            <h2 class="display-4 mb-0">8</h2>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <!-- End Col -->
             <div class="col">
-                <div class="card card-border-left border-primary shadow-soft h-100">
-                    <div class="card-body d-flex align-items-center">
-                        <i class="tio-user-big-outlined tio-xl text-primary mr-3"></i>
-                        <div class="info-body">
-                            <span class="d-block font-size-sm">Alumni</span>
-                            <div class="d-fle-align-items-center">
-                                <h3 class="mb-0">120</h3>
-                            </div>
+                <a href="javascript:;" class="card card-hover-shadow h-100">
+                    <div class="card-body">
+                        <h6 class="card-title text-uppercase">Alumni</h6>
+                        <div class="d-fle-align-items-center">
+                            <h2 class="display-4 mb-0">120</h2>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             <!-- End Col -->
         </div>
         <!-- End Row -->
+
         <div class="row g-3">
-            <div class="col-12">
-                <div class="card bg-success">
-                    <div class="card-body">
-                        <h1 class="text-white text-cap mb-0 font-weight-bolder text-center">Selamat Datang Di Halaman Tracer Study
-                            UNISBA Blitar</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
+            <div class="col-lg-4 col-md-6">
                 <div class="card">
                     <div class="card-header bg-primary">
                         <h4 class="mb-0 text-white text-cap">Informasi Anda</h4>
@@ -100,55 +91,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-lg-8 col-md-6">
                 <div class="card">
                     <div class="card-header bg-primary">
                         <h4 class="mb-0 text-white text-cap">Statistik Alumni Mahasiswa FTI 2021</h4>
                     </div>
                     <div class="card-body">
-                        <!-- Pie Chart -->
-                        <div class="chartjs-custom mb-3 mb-sm-5" style="height: 14rem;">
-                            <canvas class="js-chart"
-                                data-hs-chartjs-options='{
-                                "type": "doughnut",
-                                "data": {
-                                "labels": ["Teknik Informatika", "Sistem Komputer"],
-                                "datasets": [{
-                                    "data": [100, 50],
-                                    "backgroundColor": ["#377dff", "#00c9db"],
-                                    "borderWidth": 5,
-                                    "hoverBorderColor": "#fff"
-                                }]
-                                },
-                                "options": {
-                                    "tooltips": {
-                                        "postfix": "%",
-                                        "hasIndicator": true,
-                                        "mode": "index",
-                                        "intersect": false
-                                    },
-                                    "hover": {
-                                        "mode": "nearest",
-                                        "intersect": true
-                                    }
-                                }
-                            }'></canvas>
-                        </div>
-                        <!-- End Pie Chart -->
-
-                        <!-- Legend Indicators -->
-                        <div class="d-flex justify-content-center">
-                            <div class="col-auto mb-3 mb-sm-0">
-                                <span class="card-title h4">100</span>
-                                <span class="legend-indicator bg-primary"></span> Teknik Informatika
-                            </div>
-
-                            <div class="col-auto mb-3 mb-sm-0">
-                                <span class="card-title h4">50</span>
-                                <span class="legend-indicator bg-info"></span> Sistem Komputer
-                            </div>
-                        </div>
-                        <!-- End Legend Indicators -->
                     </div>
                 </div>
             </div>

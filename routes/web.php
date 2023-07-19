@@ -17,4 +17,7 @@ Route::get('/', function () { return redirect('/dashboard'); });
 
 Route::get('/dashboard', function () { return view('users.index'); });
 
-Route::get('/data/alumni', function () { return view('alumni.index'); });
+Route::prefix('user')->group(function () {
+    Route::get('/data/alumni', function () { return view('users.alumni.index'); });
+    Route::get('/data/tracer-study', function () { return view('alumni.index'); });
+});

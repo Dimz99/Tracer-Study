@@ -2,8 +2,9 @@
             <div class="container">
                 <div class="navbar-nav-wrap">
                     <!-- Logo -->
-                    <a class="navbar-brand" href="/index.html" aria-label="Front">
-                        <img class="navbar-brand-logo" src="/assets/svg/logos/logo-white.svg" alt="Logo">
+                    <a class="navbar-brand d-flex align-items-center" href="/" aria-label="Front">
+                        <img class="avatar me-2" src="{{asset('assets/img/Logo_Universitas_Islam_Balitar.png')}}" alt="Logo">
+                        <span class="display-4 text-uppercase">Tracer Study</span>
                     </a>
                     <!-- End Logo -->
 
@@ -42,7 +43,6 @@
                                         <div class="dropdown-divider"></div>
 
                                         <a class="dropdown-item" href="#">Profile &amp; account</a>
-                                        <a class="dropdown-item" href="#">Settings</a>
 
                                         <div class="dropdown-divider"></div>
 
@@ -93,8 +93,8 @@
                             <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link dropdown-toggle " href="#" role="button"><i class="bi-files-alt dropdown-item-icon"></i> Data</a>
 
                             <!-- Mega Menu -->
-                            <div class="hs-sub-menu dropdown-menu navbar-dropdown-menu-borderless" aria-labelledby="pagesMegaMenu" style="min-width: 14rem;">
-                                <a class="dropdown-item " href="javascript:;" data-placement="left">Alumni</a>
+                            <div class="hs-sub-menu dropdown-menu navbar-dropdown-menu-inner" aria-labelledby="pagesMegaMenu" style="min-width: 14rem;">
+                                <a class="dropdown-item active" href="/user/data/alumni" data-placement="left">Alumni</a>
                                 <a class="dropdown-item " href="javascript:;" data-placement="left">Tracer Study</a>
                             </div>
                             <!-- End Mega Menu -->
@@ -105,8 +105,7 @@
                         <li class="hs-has-sub-menu nav-item">
                             <a id="appsMegaMenu" class="hs-mega-menu-invoker nav-link dropdown-toggle " href="#" role="button"><i class="bi-app-indicator dropdown-item-icon"></i> Laporan</a>
 
-                            <div class="hs-sub-menu dropdown-menu navbar-dropdown-menu-borderless"
-                                aria-labelledby="appsMegaMenu" style="min-width: 14rem;">
+                            <div class="hs-sub-menu dropdown-menu navbar-dropdown-menu-inner" aria-labelledby="appsMegaMenu" style="min-width: 14rem;">
                                 <a class="dropdown-item " href="javascript:;">Statistik Mahasiswa</a>
                             </div>
                         </li>

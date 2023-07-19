@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>Double Line Header (Container) | Front - Admin &amp; Dashboard Template</title>
+    <title>Beranda | Tracer Study - Universitas Islam Balitar</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="{{asset('assets/img/Logo_Universitas_Islam_Balitar.png')}}">
 
     <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -24,6 +24,7 @@
     <link rel="preload" href="/assets/css/theme.min.css" data-hs-appearance="default" as="style">
 
     <!-- CSS Additional Template -->
+    <link rel="stylesheet" href="{{ asset('assets/vendor/tom-select/dist/css/tom-select.bootstrap5.css')}}">
     @stack('css')
 
     <style data-hs-appearance-onload-styles>
