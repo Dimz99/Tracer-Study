@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\User\Auth\LoginController;
+use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\Data\AlumniController;
+use App\Http\Controllers\User\Setting\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,11 +17,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () { return redirect('/dashboard'); });
+Route::get('/', function () { return redirect('/login'); });
 
-Route::get('/dashboard', function () { return view('users.index'); });
+Route::get('/login', [LoginController::class, 'index']);
 
 Route::prefix('user')->group(function () {
-    Route::get('/data/alumni', function () { return view('users.alumni.index'); });
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+
+    Route::get('/data/alumni', [AlumniController::class, 'index']);
+    Route::get('/data/alumni/detail/{id}', [AlumniController::class, 'detail']);
+
     Route::get('/data/tracer-study', function () { return view('alumni.index'); });
+
+    Route::get('/profile', [ProfileController::class, 'index']);
 });

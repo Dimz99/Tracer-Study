@@ -42,11 +42,11 @@
 
                                         <div class="dropdown-divider"></div>
 
-                                        <a class="dropdown-item" href="#">Profile &amp; account</a>
+                                        <a class="dropdown-item" href="/user/profile">Profile &amp; account</a>
 
                                         <div class="dropdown-divider"></div>
 
-                                        <a class="dropdown-item" href="#">Sign out</a>
+                                        <a class="dropdown-item" href="/logout">Log out</a>
                                     </div>
                                 </div>
                                 <!-- End Account -->
@@ -82,11 +82,27 @@
                     <ul class="navbar-nav">
                         <!-- Dashboards -->
                         <li class="nav-item">
-                            <a class="nav-link active" href="" data-placement="left">
+                            <a class="nav-link {{ (request()->is('user/dashboard')) ? 'active' : '' }}" href="/user/dashboard" data-placement="left">
                                 <i class="bi-house-door dropdown-item-icon"></i> Dashboards
                             </a>
                         </li>
                         <!-- End Dashboards -->
+
+                        <!-- Alumni -->
+                        <li class="nav-item">
+                            <a class="nav-link {{ (request()->is('user/data/alumni')) ? 'active' : '' }}" href="/user/data/alumni" data-placement="left">
+                                <i class="bi-people dropdown-item-icon"></i> Alumni
+                            </a>
+                        </li>
+                        <!-- End Alumni -->
+
+                        <!-- Tracer -->
+                        <li class="nav-item">
+                            <a class="nav-link {{ (request()->is('user/data/tracer-study')) ? 'active' : '' }}" href="/user/data/tracer-study" data-placement="left">
+                                <i class="bi-pencil-square dropdown-item-icon"></i> Tracer Study
+                            </a>
+                        </li>
+                        <!-- End Tracer -->
 
                         <!-- Pages -->
                         <li class="hs-has-sub-menu nav-item">
@@ -94,8 +110,8 @@
 
                             <!-- Mega Menu -->
                             <div class="hs-sub-menu dropdown-menu navbar-dropdown-menu-inner" aria-labelledby="pagesMegaMenu" style="min-width: 14rem;">
-                                <a class="dropdown-item active" href="/user/data/alumni" data-placement="left">Alumni</a>
-                                <a class="dropdown-item " href="javascript:;" data-placement="left">Tracer Study</a>
+                                <a class="dropdown-item {{ (request()->is('user/data/alumni')) ? 'active' : '' }}" href="/user/data/alumni" data-placement="left">Alumni</a>
+                                <a class="dropdown-item {{ (request()->is('user/data/tracer-study')) ? 'active' : '' }}" href="javascript:;" data-placement="left">Tracer Study</a>
                             </div>
                             <!-- End Mega Menu -->
                         </li>
@@ -106,7 +122,7 @@
                             <a id="appsMegaMenu" class="hs-mega-menu-invoker nav-link dropdown-toggle " href="#" role="button"><i class="bi-app-indicator dropdown-item-icon"></i> Laporan</a>
 
                             <div class="hs-sub-menu dropdown-menu navbar-dropdown-menu-inner" aria-labelledby="appsMegaMenu" style="min-width: 14rem;">
-                                <a class="dropdown-item " href="javascript:;">Statistik Mahasiswa</a>
+                                <a class="dropdown-item {{ (request()->is('user/report/statistik')) ? 'active' : '' }}" href="javascript:;">Statistik Mahasiswa</a>
                             </div>
                         </li>
                         <!-- End Apps -->

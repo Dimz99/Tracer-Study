@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('tracers', function (Blueprint $table) {
             $table->id();
+            $table->string('alumni_id')->unique();
+            $table->string('code_pertanyaan_a');
+            $table->string('code_pertanyaan_b');
+            $table->string('nilai');
             $table->timestamps();
         });
     }

@@ -15,6 +15,16 @@ return new class extends Migration
     {
         Schema::create('alumnis', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('NIM')->unique();
+            $table->string('email')->unique();
+            $table->string('telepon');
+            $table->string('gender');
+            $table->string('thn_masuk');
+            $table->string('thn_keluar');
+            $table->string('prodi');
+            $table->string('Fakultas');
+            $table->string('Alamat');
             $table->timestamps();
         });
     }
