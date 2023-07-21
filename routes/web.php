@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () { return redirect('/login'); });
 
 Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'doLogin']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::prefix('user')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);

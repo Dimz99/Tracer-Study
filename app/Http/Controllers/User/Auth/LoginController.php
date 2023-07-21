@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -14,5 +15,26 @@ class LoginController extends Controller
         ];
 
         return view('users.auth.login')->with($params);
+    }
+
+    public function doLogin(Request $request)
+    {
+        if (Auth::attempt(['nim' => $request->nim, 'password' => $request->password])) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('user/dashboard');
+        }
+
+        return redirect()->back()->with('alert-danger', 'NIM atau password salah');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+        return redirect('/login')->with('alert-success', 'Berhasil keluar');
     }
 }
