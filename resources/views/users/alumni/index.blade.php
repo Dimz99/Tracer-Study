@@ -32,9 +32,9 @@
                             <div class="input-group-prepend input-group-text">
                                 <i class="bi-search"></i>
                             </div>
-                            <input type="search" class="form-control form-control-sm" placeholder="Cari Alumni" aria-label="Cari Alumni">
+                            <input type="search" id="searchRabin" class="form-control form-control-sm" placeholder="Cari Alumni" aria-label="Cari Alumni">
                         </div>
-                        <a href="javascript:;" class="btn btn-sm btn-primary">Rabin</a>
+                        <a href="javascript:;" id="srcButton" class="btn btn-sm btn-primary">Rabin</a>
                         <!-- End Search -->
                     </div>
                 </div>
@@ -153,7 +153,7 @@
                     </thead>
 
                     <tbody>
-                        <tr>
+                        {{-- <tr>
                             <td class="pe-0">1</td>
                             <td class="ps-0">17104410041</td>
                             <td>Dimas Dwi</td>
@@ -180,7 +180,7 @@
                                     <i class="bi-eye"></i> Detail
                                 </a>
                             </td>
-                        </tr>
+                        </tr> --}}
 
                     </tbody>
                 </table>
@@ -235,130 +235,130 @@
         <?php
 
             // Fungsi untuk melakukan preprocessing
-            function preprocess($text) {
-                // Mengubah semua karakter menjadi huruf kecil dan menghapus karakter non-alfabet
-                $text = strtolower(preg_replace('/[^a-zA-Z0-9]/', '', $text));
-                return $text;
-            }
+            // function preprocess($text) {
+            //     // Mengubah semua karakter menjadi huruf kecil dan menghapus karakter non-alfabet
+            //     $text = strtolower(preg_replace('/[^a-zA-Z0-9]/', '', $text));
+            //     return $text;
+            // }
 
-            // Fungsi untuk melakukan tokenizing menjadi k-gram
-            function tokenize($text, $k) {
-                $tokens = [];
-                $n = strlen($text);
+            // // Fungsi untuk melakukan tokenizing menjadi k-gram
+            // function tokenize($text, $k) {
+            //     $tokens = [];
+            //     $n = strlen($text);
 
-                // Memisahkan teks menjadi k-gram
-                for ($i = 0; $i < $n - $k + 1; $i++) {
-                    $tokens[] = substr($text, $i, $k);
-                }
+            //     // Memisahkan teks menjadi k-gram
+            //     for ($i = 0; $i < $n - $k + 1; $i++) {
+            //         $tokens[] = substr($text, $i, $k);
+            //     }
 
-                return $tokens;
-            }
+            //     return $tokens;
+            // }
 
-            // Fungsi untuk menghitung nilai hash menggunakan rolling hash
-            function rollingHash($token) {
-                $hash = 0;
-                $n = strlen($token);
-                $prime = 11; // Bilangan prima untuk menghindari kolisi hash
+            // // Fungsi untuk menghitung nilai hash menggunakan rolling hash
+            // function rollingHash($token) {
+            //     $hash = 0;
+            //     $n = strlen($token);
+            //     $prime = 11; // Bilangan prima untuk menghindari kolisi hash
 
-                for ($i = 0; $i < $n; $i++) {
-                    $hash += ord($token[$i]) * pow($prime, $n - $i - 1);
-                }
+            //     for ($i = 0; $i < $n; $i++) {
+            //         $hash += ord($token[$i]) * pow($prime, $n - $i - 1);
+            //     }
 
-                return $hash;
-            }
+            //     return $hash;
+            // }
 
-            // Fungsi untuk menghitung fingerprint dari token
-            function fingerprint($token) {
-                return rollingHash($token);
-            }
+            // // Fungsi untuk menghitung fingerprint dari token
+            // function fingerprint($token) {
+            //     return rollingHash($token);
+            // }
 
-            // Fungsi untuk menghitung kesamaan antara dua set fingerprint
-            function similarity($fingerprint1, $fingerprint2) {
-                $intersection = count(array_intersect($fingerprint1, $fingerprint2));
-                $union = count(array_unique(array_merge($fingerprint1, $fingerprint2)));
-                $similarity = $intersection / $union * 100;
-                echo (count($fingerprint1) + count($fingerprint2));
-                return $similarity;
-            }
+            // // Fungsi untuk menghitung kesamaan antara dua set fingerprint
+            // function similarity($fingerprint1, $fingerprint2) {
+            //     $intersection = count(array_intersect($fingerprint1, $fingerprint2));
+            //     $union = count(array_unique(array_merge($fingerprint1, $fingerprint2)));
+            //     $similarity = $intersection / $union * 100;
+            //     echo (count($fingerprint1) + count($fingerprint2));
+            //     return $similarity;
+            // }
 
-            // Data input
-            $data_input = "17104410041 Dimas Dwi 2017";
-            $data_sample = "17104410041dimasdwiichtiartoteknologiinfomasiteknikinformatikalakilaki2017";
+            // // Data input
+            // $data_input = "17104410041 Dimas Dwi 2017";
+            // $data_sample = "17104410041dimasdwiichtiartoteknologiinfomasiteknikinformatikalakilaki2017";
 
-            // Preprocessing
-            $data_input = preprocess($data_input);
-            $data_sample = preprocess($data_sample);
+            // // Preprocessing
+            // $data_input = preprocess($data_input);
+            // $data_sample = preprocess($data_sample);
 
-            // Tokenizing
-            $k = 3;
-            $tokens_input = tokenize($data_input, $k);
-            $tokens_sample = tokenize($data_sample, $k);
+            // // Tokenizing
+            // $k = 3;
+            // $tokens_input = tokenize($data_input, $k);
+            // $tokens_sample = tokenize($data_sample, $k);
 
-            // Hashing (Rolling Hash)
-            $fingerprints_input = [];
-            $fingerprints_sample = [];
+            // // Hashing (Rolling Hash)
+            // $fingerprints_input = [];
+            // $fingerprints_sample = [];
 
-            foreach ($tokens_input as $token) {
-                $fingerprints_input[] = fingerprint($token);
-            }
+            // foreach ($tokens_input as $token) {
+            //     $fingerprints_input[] = fingerprint($token);
+            // }
 
-            foreach ($tokens_sample as $token) {
-                $fingerprints_sample[] = fingerprint($token);
-            }
+            // foreach ($tokens_sample as $token) {
+            //     $fingerprints_sample[] = fingerprint($token);
+            // }
 
-            // Similarity
-            $similarity = similarity($fingerprints_input, $fingerprints_sample);
+            // // Similarity
+            // $similarity = similarity($fingerprints_input, $fingerprints_sample);
 
-            // Tampilkan hasil
-            echo "Data Input: " . $data_input . "\n";
-            echo "Data Sample: " . $data_sample . "\n";
-            echo "Token: " . json_encode($tokens_input) . "\n";
-            echo "Token: " . json_encode($fingerprints_input) . "\n";
-            echo "Similarity: " . $similarity . "\n";
+            // // Tampilkan hasil
+            // echo "Data Input: " . $data_input . "\n";
+            // echo "Data Sample: " . $data_sample . "\n";
+            // echo "Token: " . json_encode($tokens_input) . "\n";
+            // echo "Token: " . json_encode($fingerprints_input) . "\n";
+            // echo "Similarity: " . $similarity . "\n";
 
-            function calculateHash($str, $base, $length) {
-                $hash = 0;
-                for ($i = 0; $i < $length; $i++) {
-                    $hash += ord($str[$i]) * pow($base, $length - 1 - $i);
-                }
-                return $hash;
-            }
+            // function calculateHash($str, $base, $length) {
+            //     $hash = 0;
+            //     for ($i = 0; $i < $length; $i++) {
+            //         $hash += ord($str[$i]) * pow($base, $length - 1 - $i);
+            //     }
+            //     return $hash;
+            // }
 
-            function updateHash($prevHash, $prevChar, $newChar, $k, $base) {
-                $newHash = $prevHash - ord($prevChar);
-                $newHash /= $base;
-                $newHash += ord($newChar) * pow($base, $k - 1);
-                return $newHash;
-            }
+            // function updateHash($prevHash, $prevChar, $newChar, $k, $base) {
+            //     $newHash = $prevHash - ord($prevChar);
+            //     $newHash /= $base;
+            //     $newHash += ord($newChar) * pow($base, $k - 1);
+            //     return $newHash;
+            // }
 
-            function tokenizeAndRollingHash($str, $k, $base) {
-                $result = [];
+            // function tokenizeAndRollingHash($str, $k, $base) {
+            //     $result = [];
 
-                $length = strlen($str);
-                if ($length < $k) {
-                    return $result;
-                }
+            //     $length = strlen($str);
+            //     if ($length < $k) {
+            //         return $result;
+            //     }
 
-                $currentHash = calculateHash(substr($str, 0, $k), $base, $k);
+            //     $currentHash = calculateHash(substr($str, 0, $k), $base, $k);
 
-                for ($i = 0; $i <= $length - $k; $i++) {
-                    $kgram = substr($str, $i, $k);
-                    $result[] = '{' . $currentHash . '}';
-                    if ($i + $k < $length) {
-                        $currentHash = updateHash($currentHash, $str[$i], $str[$i + $k], $k, $base);
-                    }
-                }
+            //     for ($i = 0; $i <= $length - $k; $i++) {
+            //         $kgram = substr($str, $i, $k);
+            //         $result[] = '{' . $currentHash . '}';
+            //         if ($i + $k < $length) {
+            //             $currentHash = updateHash($currentHash, $str[$i], $str[$i + $k], $k, $base);
+            //         }
+            //     }
 
-                return $result;
-            }
+            //     return $result;
+            // }
 
-            // Example usage:
-            $string = "17104410041dimasdwi2017";
-            $k = 3;
-            $base = 11;
+            // // Example usage:
+            // $string = "17104410041dimasdwi2017";
+            // $k = 3;
+            // $base = 11;
 
-            $tokens = tokenizeAndRollingHash($string, $k, $base);
-            echo implode(" ", $tokens);
+            // $tokens = tokenizeAndRollingHash($string, $k, $base);
+            // echo implode(" ", $tokens);
         ?>
     </div>
     <!-- End Content -->
@@ -388,6 +388,72 @@
                     },
                 ],
                 responsive: true,
+                processing: false,
+                serverSide: true,
+                paging: true,
+                searching: false,
+                start: 0,
+                length: 10,
+                ajax: function(data, callback) {
+                    $.ajax({
+                        url: '/user/data/alumni/ajax',
+                        'data':{
+                            ...data,
+                            string: $('#searchRabin').val(),
+                        },
+                        dataType: 'json',
+                        beforeSend: function() {
+                            // Here, manually add the loading message.
+                            $('#datatable > tbody').html(
+                                '<tr>' +
+                                '<td colspan="8"><div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div></td>' +
+                                '</tr>'
+                            );
+                        },
+                        success: function(res) {
+                            callback(res);
+                        }
+                    })
+                },
+                columns: [
+                    {
+                        data: 'id',
+                        name: 'id'
+                    },
+                    {
+                        data: 'NIM',
+                        name: 'Nomor Induk'
+                    },
+                    {
+                        data: 'nama',
+                        name: 'Nama'
+                    },
+                    {
+                        data: 'prodi',
+                        name: 'Program Studi'
+                    },
+                    {
+                        data: 'Fakultas',
+                        name: 'Fakultas'
+                    },
+                    {
+                        data: 'gender',
+                        name: 'jenis Kelamin'
+                    },
+                    {
+                        data: 'thn_masuk',
+                        name: 'Tahun Masuk'
+                    },
+                    {
+                        data: null,
+                        name: 'Action',
+                        render: function (data, type, full) {
+                            return `<a class="btn btn-sm btn-info" href="/user/data/alumni/detail/${data.id}">
+                                    <i class="bi-eye"></i> Detail
+                                </a>`;
+                        }
+                    },
+                ],
                 language: {
                     zeroRecords: `<div class="text-center p-4">
                         <img class="mb-3" src="/assets/svg/illustrations/oc-error.svg" alt="Image Description" style="width: 10rem;" data-hs-theme-appearance="default">
@@ -401,6 +467,10 @@
 
             $('#export-excel').click(function() {
                 datatable.button('.buttons-excel').trigger()
+            });
+
+            $('#srcButton').click(function() {
+                datatable.ajax.reload()
             });
 
             $('.js-datatable-filter').on('change', function() {

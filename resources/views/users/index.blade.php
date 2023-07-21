@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div class="row row-cols-md-3 row-cols-sm-2 row-cols-1 g-3 mb-3">
+        {{-- <div class="row row-cols-md-3 row-cols-sm-2 row-cols-1 g-3 mb-3">
             <div class="col">
                 <a href="javascript:;" class="card card-hover-shadow h-100">
                     <div class="card-body">
@@ -100,7 +100,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
     <!-- End Content -->
 @endsection

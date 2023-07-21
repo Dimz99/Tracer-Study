@@ -17,16 +17,16 @@ class AlumniSeeder extends Seeder
     {
         //
         DB::table('alumnis')->insert([
-            'nama' => 'Dimas Dwi',
-            'NIM' => '123456',
-            'email' => 'dimas@gmail.com',
+            'nama' => 'Danang Saputra',
+            'NIM' => '17104410040',
+            'email' => 'danang@gmail.com',
             'password' => bcrypt('12345678'),
             'telepon' => '08712312893721',
-            'gender' => 'L',
+            'gender' => 'Laki - Laki',
             'thn_masuk' => '2017',
             'thn_keluar' => '2023',
-            'prodi' => 'TI',
-            'Fakultas' => 'FTI',
+            'prodi' => 'Sistem Komputer',
+            'Fakultas' => 'Teknologi Informasi',
             'Alamat' => 'Blitar'
         ]);
     }

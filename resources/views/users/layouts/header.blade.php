@@ -103,29 +103,6 @@
                             </a>
                         </li>
                         <!-- End Tracer -->
-
-                        <!-- Pages -->
-                        <li class="hs-has-sub-menu nav-item">
-                            <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link dropdown-toggle " href="#" role="button"><i class="bi-files-alt dropdown-item-icon"></i> Data</a>
-
-                            <!-- Mega Menu -->
-                            <div class="hs-sub-menu dropdown-menu navbar-dropdown-menu-inner" aria-labelledby="pagesMegaMenu" style="min-width: 14rem;">
-                                <a class="dropdown-item {{ (request()->is('user/data/alumni')) ? 'active' : '' }}" href="/user/data/alumni" data-placement="left">Alumni</a>
-                                <a class="dropdown-item {{ (request()->is('user/data/tracer-study')) ? 'active' : '' }}" href="javascript:;" data-placement="left">Tracer Study</a>
-                            </div>
-                            <!-- End Mega Menu -->
-                        </li>
-                        <!-- End Pages -->
-
-                        <!-- Apps -->
-                        <li class="hs-has-sub-menu nav-item">
-                            <a id="appsMegaMenu" class="hs-mega-menu-invoker nav-link dropdown-toggle " href="#" role="button"><i class="bi-app-indicator dropdown-item-icon"></i> Laporan</a>
-
-                            <div class="hs-sub-menu dropdown-menu navbar-dropdown-menu-inner" aria-labelledby="appsMegaMenu" style="min-width: 14rem;">
-                                <a class="dropdown-item {{ (request()->is('user/report/statistik')) ? 'active' : '' }}" href="javascript:;">Statistik Mahasiswa</a>
-                            </div>
-                        </li>
-                        <!-- End Apps -->
                     </ul>
 
                 </div>
