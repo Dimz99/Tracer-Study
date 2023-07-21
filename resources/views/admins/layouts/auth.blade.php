@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>Beranda | Tracer Study - Universitas Islam Balitar</title>
+    <title>Log In | Tracer Study UNISBA</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{asset('assets/img/Logo_Universitas_Islam_Balitar.png')}}">
@@ -17,15 +17,10 @@
 
     <!-- CSS Implementing Plugins -->
     <link rel="stylesheet" href="/assets/vendor/bootstrap-icons/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.css">
 
     <!-- CSS Front Template -->
 
-    <link rel="preload" href="/assets/css/theme.min.css" data-hs-appearance="default" as="style">
-
-    <!-- CSS Additional Template -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/tom-select/dist/css/tom-select.bootstrap5.css')}}">
-    @stack('css')
+    <link rel="preload" href="{{asset('assets/css/theme.min.css')}}" data-hs-appearance="default" as="style">
 
     <style data-hs-appearance-onload-styles>
         * {
@@ -130,16 +125,23 @@
 
     <script src="/assets/js/hs.theme-appearance.js"></script>
 
-    <!-- ========== HEADER ========== -->
-    <header id="header" class="navbar navbar-expand-lg navbar-bordered navbar-spacer-y-0 flex-lg-column">
-        @include('admins.layouts.header')
-    </header>
-    <!-- ========== END HEADER ========== -->
-
     <!-- ========== MAIN CONTENT ========== -->
     <main id="content" role="main" class="main">
+        <div class="position-fixed top-0 end-0 start-0 bg-img-start"
+            style="height: 32rem; background-image: url(/assets/svg/components/card-6.svg);">
+            <!-- Shape -->
+            <div class="shape shape-bottom zi-1">
+                <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    viewBox="0 0 1921 273">
+                    <polygon fill="#fff" points="0,273 1921,273 1921,0 " />
+                </svg>
+            </div>
+            <!-- End Shape -->
+        </div>
+
         <!-- Content -->
         @yield('content')
+        <!-- End Content -->
     </main>
     <!-- ========== END MAIN CONTENT ========== -->
 
@@ -149,9 +151,7 @@
     <script src="/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- JS Implementing Plugins -->
-    <script src="/assets/vendor/hs-mega-menu/dist/hs-mega-menu.min.js"></script>
-    <script src="/assets/vendor/hs-form-search/dist/hs-form-search.min.js"></script>
-    @stack('js')
+    <script src="/assets/vendor/hs-toggle-password/dist/js/hs-toggle-password.js"></script>
 
     <!-- JS Front -->
     <script src="/assets/js/theme.min.js"></script>
@@ -159,27 +159,13 @@
     <!-- JS Plugins Init. -->
     <script>
         (function() {
-            // INITIALIZATION OF BOOTSTRAP DROPDOWN
-            // =======================================================
-            HSBsDropdown.init()
-
-
-            // INITIALIZATION OF MEGA MENU
-            // =======================================================
-            new HSMegaMenu('.js-mega-menu', {
-                desktop: {
-                    position: 'left'
-                }
-            })
-
-
-            // INITIALIZATION OF FORM SEARCH
-            // =======================================================
-            new HSFormSearch('.js-form-search')
+            window.onload = function() {
+                // INITIALIZATION OF TOGGLE PASSWORD
+                // =======================================================
+                new HSTogglePassword('.js-toggle-password')
+            }
         })()
     </script>
-
-    <!-- Style Switcher JS -->
 </body>
 
 </html>

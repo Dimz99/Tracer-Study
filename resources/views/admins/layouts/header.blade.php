@@ -1,76 +1,120 @@
-      <header id="header" class="navbar navbar-expand-lg navbar-fixed navbar-height navbar-flush navbar-container navbar-bordered">
-        <div class="navbar-nav-wrap">
-          <div class="navbar-brand-wrapper">
-            <!-- Logo -->
-            <a class="navbar-brand" href="/dashboard" aria-label="Front">
-              <img class="navbar-brand-logo" src="{{ asset('/assets/svg/logos/logo.svg') }}" alt="Logo">
-              <img class="navbar-brand-logo-mini" src="{{ asset('/assets/svg/logos/logo-short.svg') }}" alt="Logo">
-            </a>
-            <!-- End Logo -->
-          </div>
+        <div class="navbar-dark w-100 bg-dark py-2">
+            <div class="container">
+                <div class="navbar-nav-wrap">
+                    <!-- Logo -->
+                    <a class="navbar-brand d-flex align-items-center" href="/" aria-label="Front">
+                        <img class="avatar me-2" src="{{asset('assets/img/Logo_Universitas_Islam_Balitar.png')}}" alt="Logo">
+                        <span class="display-4 text-uppercase">Tracer Study</span>
+                    </a>
+                    <!-- End Logo -->
 
-          <div class="navbar-nav-wrap-content-left">
-            <!-- Navbar Vertical Toggle -->
-            <button type="button" class="js-navbar-vertical-aside-toggle-invoker close mr-3">
-              <i class="tio-first-page navbar-vertical-aside-toggle-short-align" data-toggle="tooltip" data-placement="right" title="Collapse"></i>
-              <i class="tio-last-page navbar-vertical-aside-toggle-full-align" data-template='<div class="tooltip d-none d-sm-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>' data-toggle="tooltip" data-placement="right" title="Expand"></i>
-            </button>
-            <!-- End Navbar Vertical Toggle -->
+                    <!-- Content End -->
+                    <div class="navbar-nav-wrap-content-end">
+                        <!-- Navbar -->
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <!-- Account -->
+                                <div class="dropdown">
+                                    <a class="navbar-dropdown-account-wrapper" href="javascript:;"
+                                        id="accountNavbarDropdown" data-bs-toggle="dropdown" aria-expanded="false"
+                                        data-bs-auto-close="outside" data-bs-dropdown-animation>
+                                        <div class="avatar avatar-sm avatar-circle">
+                                            <img class="avatar-img" src="/assets/img/160x160/img1.jpg"
+                                                alt="Image Description">
+                                            <span class="avatar-status avatar-sm-status avatar-status-success"></span>
+                                        </div>
+                                    </a>
 
-          </div>
+                                    <div class="dropdown-menu dropdown-menu-end navbar-dropdown-menu navbar-dropdown-menu-borderless navbar-dropdown-account"
+                                        aria-labelledby="accountNavbarDropdown" style="width: 16rem;">
+                                        <div class="dropdown-item-text">
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar avatar-sm avatar-circle">
+                                                    <img class="avatar-img" src="/assets/img/160x160/img1.jpg"
+                                                        alt="Image Description">
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <h5 class="mb-0">Mark Williams</h5>
+                                                    <p class="card-text text-body">superadmin</p>
+                                                </div>
+                                            </div>
+                                        </div>
 
-          <!-- Secondary Content -->
-          <div class="navbar-nav-wrap-content-right">
-            <!-- Navbar -->
-            <ul class="navbar-nav align-items-center flex-row">
-              <li class="nav-item">
-                <!-- Account -->
-                <div class="hs-unfold">
-                  <a class="js-hs-unfold-invoker navbar-dropdown-account-wrapper" href="javascript:;"
-                     data-hs-unfold-options='{
-                       "target": "#accountNavbarDropdown",
-                       "type": "css-animation"
-                     }'>
-                    <div class="avatar avatar-sm avatar-circle">
-                      <img class="avatar-img" src="{{asset('/assets/img/160x160/img6.jpg')}}" alt="Image Description">
-                      <span class="avatar-status avatar-sm-status avatar-status-success"></span>
+                                        <div class="dropdown-divider"></div>
+
+                                        <a class="dropdown-item" href="/admin/profile">Profile &amp; account</a>
+
+                                        <div class="dropdown-divider"></div>
+
+                                        <a class="dropdown-item" href="/logout">Log out</a>
+                                    </div>
+                                </div>
+                                <!-- End Account -->
+                            </li>
+
+                            <li class="nav-item">
+                                <!-- Toggler -->
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#navbarDoubleLineContainerNavDropdown"
+                                    aria-controls="navbarDoubleLineContainerNavDropdown" aria-expanded="false"
+                                    aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-default">
+                                        <i class="bi-list"></i>
+                                    </span>
+                                    <span class="navbar-toggler-toggled">
+                                        <i class="bi-x"></i>
+                                    </span>
+                                </button>
+                                <!-- End Toggler -->
+                            </li>
+                        </ul>
+                        <!-- End Navbar -->
                     </div>
-                  </a>
-
-                  <div id="accountNavbarDropdown" class="hs-unfold-content dropdown-unfold dropdown-menu dropdown-menu-right navbar-dropdown-menu navbar-dropdown-account" style="width: 16rem;">
-                    <div class="dropdown-item-text">
-                      <div class="media align-items-center">
-                        <div class="avatar avatar-sm avatar-circle mr-2">
-                          <img class="avatar-img" src="{{ asset('/assets/img/160x160/img6.jpg') }}" alt="Image Description">
-                        </div>
-                        <div class="media-body">
-                          <span class="card-title h5">Dimas Dwi Ichtiarto</span>
-                          <span class="card-text">17104410041</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                      <span class="text-truncate pr-2" title="Profile &amp; account">Profile &amp; account</span>
-                    </a>
-
-                    <a class="dropdown-item" href="#">
-                      <span class="text-truncate pr-2" title="Settings">Settings</span>
-                    </a>
-
-                    <div class="dropdown-divider"></div>
-
-                    <a class="dropdown-item" href="#">
-                      <span class="text-truncate pr-2" title="Sign out">Sign out</span>
-                    </a>
-                  </div>
+                    <!-- End Content End -->
                 </div>
-                <!-- End Account -->
-              </li>
-            </ul>
-            <!-- End Navbar -->
-          </div>
-          <!-- End Secondary Content -->
+            </div>
         </div>
-      </header>
+
+        <div class="container">
+            <nav class="js-mega-menu flex-grow-1">
+                <!-- Collapse -->
+                <div class="collapse navbar-collapse" id="navbarDoubleLineContainerNavDropdown">
+                    <ul class="navbar-nav">
+                        <!-- Dashboards -->
+                        <li class="nav-item">
+                            <a class="nav-link {{ (request()->is('admin/dashboard')) ? 'active' : '' }}" href="/admin/dashboard" data-placement="left">
+                                <i class="bi-house-door dropdown-item-icon"></i> Dashboards
+                            </a>
+                        </li>
+                        <!-- End Dashboards -->
+
+                        <!-- Pages -->
+                        <li class="hs-has-sub-menu nav-item">
+                            <a id="pagesMegaMenu" class="hs-mega-menu-invoker nav-link dropdown-toggle " href="#" role="button"><i class="bi-files-alt dropdown-item-icon"></i> Manage</a>
+
+                            <!-- Mega Menu -->
+                            <div class="hs-sub-menu dropdown-menu navbar-dropdown-menu-inner" aria-labelledby="pagesMegaMenu" style="min-width: 14rem;">
+                                <a class="dropdown-item {{ (request()->is('admin/manage/program-study')) ? 'active' : '' }}" href="/admin/manage/program-studi" data-placement="left">Program Study</a>
+                                <a class="dropdown-item {{ (request()->is('admin/manage/fakultas')) ? 'active' : '' }}" href="/admin/manage/fakultas" data-placement="left">Fakultas</a>
+                                <a class="dropdown-item {{ (request()->is('admin/manage/alumni')) ? 'active' : '' }}" href="/admin/manage/alumni" data-placement="left">Alumni</a>
+                            </div>
+                            <!-- End Mega Menu -->
+                        </li>
+                        <!-- End Pages -->
+
+                        <!-- Apps -->
+                        <li class="hs-has-sub-menu nav-item">
+                            <a id="appsMegaMenu" class="hs-mega-menu-invoker nav-link dropdown-toggle " href="#" role="button"><i class="bi-app-indicator dropdown-item-icon"></i> Laporan</a>
+
+                            <div class="hs-sub-menu dropdown-menu navbar-dropdown-menu-inner" aria-labelledby="appsMegaMenu" style="min-width: 14rem;">
+                                <a class="dropdown-item {{ (request()->is('admin/report/tracer-study')) ? 'active' : '' }}" href="/admin/report/tracer-study">Tracer Study</a>
+                                <a class="dropdown-item {{ (request()->is('admin/report/statistik')) ? 'active' : '' }}" href="/admin/report/statistik">Statistik Mahasiswa</a>
+                            </div>
+                        </li>
+                        <!-- End Apps -->
+                    </ul>
+
+                </div>
+                <!-- End Collapse -->
+            </nav>
+        </div>

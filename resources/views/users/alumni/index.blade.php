@@ -290,7 +290,7 @@
             $data_sample = preprocess($data_sample);
 
             // Tokenizing
-            $k = 4;
+            $k = 3;
             $tokens_input = tokenize($data_input, $k);
             $tokens_sample = tokenize($data_sample, $k);
 
@@ -315,6 +315,50 @@
             echo "Token: " . json_encode($tokens_input) . "\n";
             echo "Token: " . json_encode($fingerprints_input) . "\n";
             echo "Similarity: " . $similarity . "\n";
+
+            function calculateHash($str, $base, $length) {
+                $hash = 0;
+                for ($i = 0; $i < $length; $i++) {
+                    $hash += ord($str[$i]) * pow($base, $length - 1 - $i);
+                }
+                return $hash;
+            }
+
+            function updateHash($prevHash, $prevChar, $newChar, $k, $base) {
+                $newHash = $prevHash - ord($prevChar);
+                $newHash /= $base;
+                $newHash += ord($newChar) * pow($base, $k - 1);
+                return $newHash;
+            }
+
+            function tokenizeAndRollingHash($str, $k, $base) {
+                $result = [];
+
+                $length = strlen($str);
+                if ($length < $k) {
+                    return $result;
+                }
+
+                $currentHash = calculateHash(substr($str, 0, $k), $base, $k);
+
+                for ($i = 0; $i <= $length - $k; $i++) {
+                    $kgram = substr($str, $i, $k);
+                    $result[] = '{' . $currentHash . '}';
+                    if ($i + $k < $length) {
+                        $currentHash = updateHash($currentHash, $str[$i], $str[$i + $k], $k, $base);
+                    }
+                }
+
+                return $result;
+            }
+
+            // Example usage:
+            $string = "17104410041dimasdwi2017";
+            $k = 3;
+            $base = 11;
+
+            $tokens = tokenizeAndRollingHash($string, $k, $base);
+            echo implode(" ", $tokens);
         ?>
     </div>
     <!-- End Content -->
