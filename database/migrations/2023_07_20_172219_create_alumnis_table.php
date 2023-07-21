@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('NIM')->unique();
             $table->string('email')->unique();
+            $table->string('password');
             $table->string('telepon');
             $table->string('gender');
             $table->string('thn_masuk');

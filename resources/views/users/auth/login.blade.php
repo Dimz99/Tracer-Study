@@ -11,13 +11,25 @@
                 <div class="card card-lg mb-5">
                     <div class="card-body">
                         <!-- Form -->
-                        <form action="/user/dashboard">
+                        <form action="/login" method="post">
+                            @csrf
                             <div class="text-center">
                                 <div class="mb-5">
                                     <h1 class="display-5">Login Mahasiswa</h1>
                                 </div>
                             </div>
+                            <div class="mb-5 mb-md-7">
 
+                                @if (session('alert-success'))
+                                    <div class="alert alert-success">
+                                        {{ session('alert-success') }}
+                                    </div>
+                                @endif
+                                @if (session('alert-danger'))
+                                    <div class="alert alert-danger">
+                                        {{ session('alert-danger') }}
+                                    </div>
+                                @endif
                             <!-- Form -->
                             <div class="mb-4">
                                 <label class="form-label" for="signinSrEmail">NIM</label>
