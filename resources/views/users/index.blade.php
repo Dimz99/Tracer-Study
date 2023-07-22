@@ -22,46 +22,63 @@
 
         <div class="card mb-5 mb-lg-3">
             <div class="card-body">
-                <h1 class="text-uppercase mb-0 fw-bold text-center">Selamat Datang Di Halaman Tracer Study UNISBA Blitar</h1>
+                <h1 class="text-uppercase mb-0 fw-bold text-center">Selamat Datang Di Halaman Tracer Study UNISBA Blitar
+                </h1>
             </div>
         </div>
 
-        <div class="row row-cols-md-3 row-cols-sm-2 row-cols-1 g-3 mb-3">
-            <div class="col">
-                <a href="javascript:;" class="card card-hover-shadow h-100">
-                    <div class="card-body">
-                        <h6 class="card-title text-uppercase">Alumni</h6>
-                        <div class="d-fle-align-items-center">
-                            <h2 class="display-4 mb-0">4.120</h2>
+        <div class="card card-body mb-3 mb-lg-5">
+            <div class="row col-lg-divider gx-lg-6">
+                <div class="col-lg-4">
+                    <!-- Media -->
+                    <div class="d-flex align-items-center" style="min-height: 5em">
+                        <div class="flex-grow-1">
+                            <h6 class="card-subtitle mb-2">Alumni</h6>
+                            <h2 class="card-title display-4">300</h2>
                         </div>
+
+                        <span class="icon icon-soft-secondary icon-sm icon-circle ms-3">
+                            <i class="bi-shop"></i>
+                        </span>
                     </div>
-                </a>
-            </div>
-            <!-- End Col -->
-            <div class="col">
-                <a href="javascript:;" class="card card-hover-shadow h-100">
-                    <div class="card-body">
-                        <h6 class="card-title text-uppercase">Fakultas</h6>
-                        <div class="d-fle-align-items-center">
-                            <h2 class="display-4 mb-0">2</h2>
+                    <!-- End Media -->
+                </div>
+                <!-- End Col -->
+
+                <div class="col-lg-4">
+                    <!-- Media -->
+                    <div class="d-flex align-items-center" style="min-height: 5em">
+                        <div class="flex-grow-1">
+                            <h6 class="card-subtitle mb-2">Fakultas</h6>
+                            <h2 class="card-title display-4">2</h2>
                         </div>
+
+                        <span class="icon icon-soft-secondary icon-sm icon-circle ms-3">
+                            <i class="bi-layout-text-window-reverse"></i>
+                        </span>
                     </div>
-                </a>
-            </div>
-            <!-- End Col -->
-            <div class="col">
-                <a href="javascript:;" class="card card-hover-shadow h-100">
-                    <div class="card-body">
-                        <h6 class="card-title text-uppercase">Tracer Study</h6>
-                        <div class="d-fle-align-items-center">
-                            <h2 class="display-4 mb-0">120</h2>
+                    <!-- End Media -->
+                </div>
+                <!-- End Col -->
+
+                <div class="col-lg-4">
+                    <!-- Media -->
+                    <div class="d-flex align-items-center" style="min-height: 5em">
+                        <div class="flex-grow-1">
+                            <h6 class="card-subtitle mb-2">Tracer Study</h6>
+                            <h2 class="card-title display-4">200</h2>
                         </div>
+
+                        <span class="icon icon-soft-secondary icon-sm icon-circle ms-3">
+                            <i class="bi-percent"></i>
+                        </span>
                     </div>
-                </a>
+                    <!-- End Media -->
+                </div>
+                <!-- End Col -->
             </div>
-            <!-- End Col -->
+            <!-- End Row -->
         </div>
-        <!-- End Row -->
 
         <div class="row g-3">
             <div class="col-lg-4 col-md-6">
@@ -101,7 +118,7 @@
 
 @push('js')
     <script>
-        $(document).on('ready', function () {
+        $(document).on('ready', function() {
             // INITIALIZATION OF CHARTJS
             // =======================================================
         });
