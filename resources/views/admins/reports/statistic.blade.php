@@ -10,58 +10,16 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb breadcrumb-no-gutter">
                             <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:;">Main</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                            <li class="breadcrumb-item"><a class="breadcrumb-link" href="javascript:;">Laporan</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Statistik Mahasiswa</li>
                         </ol>
                     </nav>
-                    <h1 class="page-header-title">Dashboard</h1>
+                    <h1 class="page-header-title">Statistik Mahasiswa</h1>
                 </div>
             </div>
             <!-- End Row -->
         </div>
         <!-- End Page Header -->
-
-        <div class="card bg-success mb-5 mb-lg-3">
-            <div class="card-body">
-                <h1 class="text-uppercase mb-0 fw-bold text-white text-center">Selamat Datang Admin Di Halaman Tracer Study UNISBA Blitar</h1>
-            </div>
-        </div>
-
-        <div class="row row-cols-md-3 row-cols-sm-2 row-cols-1 g-3 mb-3">
-            <div class="col">
-                <a href="javascript:;" class="card card-hover-shadow h-100">
-                    <div class="card-body">
-                        <h6 class="card-title text-uppercase">Alumni</h6>
-                        <div class="d-fle-align-items-center">
-                            <h2 class="display-4 mb-0">4.120</h2>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <!-- End Col -->
-            <div class="col">
-                <a href="javascript:;" class="card card-hover-shadow h-100">
-                    <div class="card-body">
-                        <h6 class="card-title text-uppercase">Fakultas</h6>
-                        <div class="d-fle-align-items-center">
-                            <h2 class="display-4 mb-0">2</h2>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <!-- End Col -->
-            <div class="col">
-                <a href="javascript:;" class="card card-hover-shadow h-100">
-                    <div class="card-body">
-                        <h6 class="card-title text-uppercase">Tracer</h6>
-                        <div class="d-fle-align-items-center">
-                            <h2 class="display-4 mb-0">120</h2>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <!-- End Col -->
-        </div>
-        <!-- End Row -->
 
         <div class="row g-3">
             <div class="col-lg-4 col-md-6">

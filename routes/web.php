@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\Admin\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\Manage\AlumniController as ManageAlumniController;
+use App\Http\Controllers\Admin\Report\StatisticController;
+use App\Http\Controllers\Admin\Report\TracerController;
 use App\Http\Controllers\Admin\Setting\ProfileController as SettingProfileController;
 use App\Http\Controllers\User\Auth\LoginController;
 use App\Http\Controllers\User\DashboardController;
@@ -46,10 +49,13 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/dashboard', [AdminDashboardController::class, 'index']);
 
-    Route::get('/data/alumni', [AlumniController::class, 'index']);
-    Route::get('/data/alumni/detail/{id}', [AlumniController::class, 'detail']);
+    Route::get('/manage/alumni', [ManageAlumniController::class, 'index']);
+    Route::get('/manage/alumni/detail/{id}', [ManageAlumniController::class, 'detail']);
 
-    Route::get('/data/tracer-study', function () { return view('alumni.index'); });
+    Route::get('/report/tracer-study', [TracerController::class, 'index']);
+    Route::get('/report/tracer-study/detail/{id}', [TracerController::class, 'detail']);
+
+    Route::get('/report/statistik', [StatisticController::class, 'index']);
 
     Route::get('/profile', [SettingProfileController::class, 'index']);
 });

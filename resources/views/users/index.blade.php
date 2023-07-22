@@ -26,11 +26,11 @@
             </div>
         </div>
 
-        {{-- <div class="row row-cols-md-3 row-cols-sm-2 row-cols-1 g-3 mb-3">
+        <div class="row row-cols-md-3 row-cols-sm-2 row-cols-1 g-3 mb-3">
             <div class="col">
                 <a href="javascript:;" class="card card-hover-shadow h-100">
                     <div class="card-body">
-                        <h6 class="card-title text-uppercase">Mahasiswa</h6>
+                        <h6 class="card-title text-uppercase">Alumni</h6>
                         <div class="d-fle-align-items-center">
                             <h2 class="display-4 mb-0">4.120</h2>
                         </div>
@@ -43,7 +43,7 @@
                     <div class="card-body">
                         <h6 class="card-title text-uppercase">Fakultas</h6>
                         <div class="d-fle-align-items-center">
-                            <h2 class="display-4 mb-0">8</h2>
+                            <h2 class="display-4 mb-0">2</h2>
                         </div>
                     </div>
                 </a>
@@ -52,7 +52,7 @@
             <div class="col">
                 <a href="javascript:;" class="card card-hover-shadow h-100">
                     <div class="card-body">
-                        <h6 class="card-title text-uppercase">Alumni</h6>
+                        <h6 class="card-title text-uppercase">Tracer Study</h6>
                         <div class="d-fle-align-items-center">
                             <h2 class="display-4 mb-0">120</h2>
                         </div>
@@ -85,22 +85,13 @@
                         <div class="form-group row mb-0">
                             <label class="col-sm-3 col-form-label">Role</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control-plaintext" value="MA" readonly>
+                                <input type="text" class="form-control-plaintext" value="Mahasiswa" readonly>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8 col-md-6">
-                <div class="card">
-                    <div class="card-header bg-primary">
-                        <h4 class="mb-0 text-white text-cap">Statistik Alumni Mahasiswa FTI 2021</h4>
-                    </div>
-                    <div class="card-body">
-                    </div>
-                </div>
-            </div>
-        </div> --}}
+        </div>
     </div>
     <!-- End Content -->
 @endsection

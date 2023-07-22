@@ -94,8 +94,8 @@
 
                             <!-- Mega Menu -->
                             <div class="hs-sub-menu dropdown-menu navbar-dropdown-menu-inner" aria-labelledby="pagesMegaMenu" style="min-width: 14rem;">
-                                <a class="dropdown-item {{ (request()->is('admin/manage/program-study')) ? 'active' : '' }}" href="/admin/manage/program-studi" data-placement="left">Program Study</a>
-                                <a class="dropdown-item {{ (request()->is('admin/manage/fakultas')) ? 'active' : '' }}" href="/admin/manage/fakultas" data-placement="left">Fakultas</a>
+                                {{-- <a class="dropdown-item {{ (request()->is('admin/manage/program-study')) ? 'active' : '' }}" href="/admin/manage/program-studi" data-placement="left">Program Study</a>
+                                <a class="dropdown-item {{ (request()->is('admin/manage/fakultas')) ? 'active' : '' }}" href="/admin/manage/fakultas" data-placement="left">Fakultas</a> --}}
                                 <a class="dropdown-item {{ (request()->is('admin/manage/alumni')) ? 'active' : '' }}" href="/admin/manage/alumni" data-placement="left">Alumni</a>
                             </div>
                             <!-- End Mega Menu -->

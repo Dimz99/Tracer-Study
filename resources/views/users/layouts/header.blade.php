@@ -35,14 +35,14 @@
                                                 </div>
                                                 <div class="flex-grow-1 ms-3">
                                                     <h5 class="mb-0">Mark Williams</h5>
-                                                    <p class="card-text text-body">mark@site.com</p>
+                                                    <p class="card-text text-body">17104410041</p>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="dropdown-divider"></div>
 
-                                        <a class="dropdown-item" href="/user/profile">Profile &amp; account</a>
+                                        <a class="dropdown-item" href="/user/profile">Profil</a>
 
                                         <div class="dropdown-divider"></div>
 
