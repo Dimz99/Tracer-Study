@@ -19,13 +19,13 @@ class LoginController extends Controller
 
     public function doLogin(Request $request)
     {
-        if (Auth::attempt(['nim' => $request->nim, 'password' => $request->password])) {
+        if (Auth::attempt(['username' => $request->nim, 'password' => $request->password])) {
             $request->session()->regenerate();
 
             return redirect()->intended('user/dashboard');
         }
 
-        return redirect()->back()->with('alert-danger', 'NIM atau password salah');
+        return redirect()->back()->with('alert-danger', 'username atau password salah');
     }
 
     public function logout(Request $request)

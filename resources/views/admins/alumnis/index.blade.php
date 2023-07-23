@@ -46,27 +46,27 @@
                                     </span>
                                 </div>
 
-                                <form>
+                                <form action="/admin/manage/alumni" method="POST">
                                     @csrf
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="nameLabel">Nama</label>
-                                                    <input type="text" id="nameLabel" class="form-control" placeholder="John Doe">
+                                                    <input type="text" id="nameLabel" class="form-control" name="name" placeholder="John Doe">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="nimLabel">NIM</label>
-                                                    <input type="text" id="nimLabel" class="form-control" placeholder="xxxxxxxxxxx">
+                                                    <input type="text" id="nimLabel" class="form-control" name="nim" placeholder="xxxxxxxxxxx">
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="angkatanLabel">Angkatan</label>
                                                     <div class="tom-select-custom">
-                                                        <select class="js-select form-select" autocomplete="off" id="angkatanLabel"
+                                                        <select class="js-select form-select" autocomplete="off" name="thn_masuk" id="angkatanLabel"
                                                                 data-hs-tom-select-options='{
                                                                 "placeholder": "Pilih Angkatan...",
                                                                 "hideSearch": true
@@ -91,7 +91,7 @@
                                                             <!-- Form Radio -->
                                                             <label class="form-control" for="formControlRadioEg1">
                                                                 <span class="form-check">
-                                                                    <input type="radio" class="form-check-input" name="gender" id="formControlRadioEg1" checked>
+                                                                    <input type="radio" class="form-check-input" name="gender" value="laki" id="formControlRadioEg1" checked>
                                                                     <span class="form-check-label">Laki - Laki</span>
                                                                 </span>
                                                             </label>
@@ -102,7 +102,7 @@
                                                             <!-- Form Radio -->
                                                             <label class="form-control" for="formControlRadioEg2">
                                                                 <span class="form-check">
-                                                                    <input type="radio" class="form-check-input" name="gender" id="formControlRadioEg2">
+                                                                    <input type="radio" class="form-check-input" name="gender" value="perempuan" id="formControlRadioEg2">
                                                                     <span class="form-check-label">Perempuan</span>
                                                                 </span>
                                                             </label>
@@ -116,7 +116,7 @@
                                                 <div class="mb-3">
                                                     <label class="form-label" for="fakultasLabel">Fakultas</label>
                                                     <div class="tom-select-custom">
-                                                        <select class="js-select form-select" autocomplete="off" id="fakultasLabel"
+                                                        <select class="js-select form-select" autocomplete="off" name="fakultas" id="fakultasLabel"
                                                                 data-hs-tom-select-options='{
                                                                 "placeholder": "Pilih Fakultas...",
                                                                 "hideSearch": true
@@ -131,7 +131,7 @@
                                                 <div class="mb-3">
                                                     <label class="form-label" for="prodiLabel">Program Studi</label>
                                                     <div class="tom-select-custom">
-                                                        <select class="js-select form-select" autocomplete="off" id="prodiLabel"
+                                                        <select class="js-select form-select" autocomplete="off" name="prodi" id="prodiLabel"
                                                                 data-hs-tom-select-options='{
                                                                 "placeholder": "Pilih Program Studi...",
                                                                 "hideSearch": true
@@ -147,7 +147,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-white" data-bs-dismiss="modal">Tutup</button>
-                                        <button type="button" class="btn btn-primary">Simpan</button>
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
                                     </div>
                                 </form>
                             </div>
@@ -296,19 +296,21 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td class="pe-0">1</td>
-                            <td class="ps-0">17104410041</td>
-                            <td>Dimas Dwi</td>
-                            <td>Teknologi Informasi</td>
-                            <td>Teknik Informatika</td>
-                            <td>Laki</td>
-                            <td>2017</td>
+                        @foreach ($alumni as $value) <tr>
+                            <td class="pe-0">{{ $value->id }}</td>
+                            <td class="ps-0">{{ $value->NIM }}</td>
+                            <td>{{ $value->nama }}</td>
+                            <td>{{ $value->fakultas }}</td>
+                            <td>{{ $value->prodi }}</td>
+                            <td>{{ $value->gender }}</td>
+                            <td>{{ $value->thn_masuk }}</td>
                             <td>
                                 <a class="btn btn-sm btn-info" href="/admin/manage/alumni/detail/1">
                                     <i class="bi-eye"></i> Detail
                                 </a>
                             </td>
+                        @endforeach
+
                         </tr>
                     </tbody>
                 </table>

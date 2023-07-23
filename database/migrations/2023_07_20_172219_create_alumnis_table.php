@@ -15,17 +15,17 @@ return new class extends Migration
     {
         Schema::create('alumnis', function (Blueprint $table) {
             $table->id();
+            $table->integer('userId');
             $table->string('nama');
             $table->string('NIM')->unique();
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('telepon');
+            $table->string('telepon')->nullable();
             $table->string('gender');
-            $table->string('thn_masuk');
-            $table->string('thn_keluar');
+            $table->string('thn_masuk')->nullable();
+            $table->string('thn_keluar')->nullable();
             $table->string('prodi');
-            $table->string('Fakultas');
-            $table->string('Alamat');
+            $table->string('fakultas');
+            $table->string('ttl')->nullable();
+            $table->string('alamat')->nullable();
             $table->timestamps();
         });
     }

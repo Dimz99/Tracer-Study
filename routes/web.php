@@ -46,10 +46,12 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('admin')->group(function () {
     Route::get('/login', [AuthLoginController::class, 'index']);
+    Route::post('/login', [AuthLoginController::class, 'doLogin']);
 
     Route::get('/dashboard', [AdminDashboardController::class, 'index']);
 
     Route::get('/manage/alumni', [ManageAlumniController::class, 'index']);
+    Route::post('/manage/alumni', [ManageAlumniController::class, 'store']);
     Route::get('/manage/alumni/detail/{id}', [ManageAlumniController::class, 'detail']);
 
     Route::get('/report/tracer-study', [TracerController::class, 'index']);
