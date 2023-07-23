@@ -22,6 +22,7 @@
             <!-- End Row -->
         </div>
         <!-- End Page Header -->
+        {{$data}}
 
         <!-- Card -->
         <div class="card">

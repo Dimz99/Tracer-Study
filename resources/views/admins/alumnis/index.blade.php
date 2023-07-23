@@ -91,7 +91,7 @@
                                                             <!-- Form Radio -->
                                                             <label class="form-control" for="formControlRadioEg1">
                                                                 <span class="form-check">
-                                                                    <input type="radio" class="form-check-input" name="gender" value="laki" id="formControlRadioEg1" checked>
+                                                                    <input type="radio" class="form-check-input" name="gender" value="Laki - Laki" id="formControlRadioEg1" checked>
                                                                     <span class="form-check-label">Laki - Laki</span>
                                                                 </span>
                                                             </label>
@@ -102,7 +102,7 @@
                                                             <!-- Form Radio -->
                                                             <label class="form-control" for="formControlRadioEg2">
                                                                 <span class="form-check">
-                                                                    <input type="radio" class="form-check-input" name="gender" value="perempuan" id="formControlRadioEg2">
+                                                                    <input type="radio" class="form-check-input" name="gender" value="Perempuan" id="formControlRadioEg2">
                                                                     <span class="form-check-label">Perempuan</span>
                                                                 </span>
                                                             </label>

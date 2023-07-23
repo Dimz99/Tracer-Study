@@ -81,6 +81,7 @@ class AlumniController extends Controller
                 $intersection = count(array_intersect($fingerprint1, $fingerprint2));
                 $union = count(array_unique(array_merge($fingerprint1, $fingerprint2)));
                 $similarity = $intersection / $union * 100;
+                // dd($union);
                 return $similarity;
             }
 
@@ -90,7 +91,7 @@ class AlumniController extends Controller
             $ds_array = $data_sample->toArray();
 
             foreach ($ds_array as $key => $value) {
-                $values = $value['NIM'] . $value['nama'] . $value['prodi'] . $value['Fakultas'] . $value['gender'] . $value['thn_masuk'];
+                $values = $value['NIM'] . $value['nama'] . $value['prodi'] . $value['fakultas'] . $value['gender'] . $value['thn_masuk'];
                 // Preprocessing
                 $data_input = preprocess($data_input);
                 $data_sample[$key] = preprocess($values);
@@ -115,9 +116,14 @@ class AlumniController extends Controller
                 // Similarity
                 $similarity = similarity($fingerprints_input, $fingerprints_sample);
 
+                $value['similarity'] = round($similarity, 2);
+
+
                 // Tampilkan hasil
                 if ($similarity > 0) {
                     $data[] = $value;
+                    usort($data, function ($a, $b) {return $a['similarity'] < $b['similarity'];});
+                    // dd($value);
                     $count = count($data);
                 }
             }
@@ -137,10 +143,11 @@ class AlumniController extends Controller
 
     public function detail(string $id)
     {
-        // $al = Alumni::all();
-
+        $al = Alumni::where('id', '=', $id)->get();
+        dd($id);
         $params = [
             'title' => 'Data Alumni | Tracer Study - Universitas Islam Balitar',
+            'data' => $al
         ];
 
         return view('users.alumni.detail')->with($params);

@@ -148,6 +148,7 @@
                             <th>Fakultas</th>
                             <th>JK</th>
                             <th>Angkatan</th>
+                            <th>Kecocokan</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -412,6 +413,7 @@
                         },
                         success: function(res) {
                             callback(res);
+                            console.log(res);
                         }
                     })
                 },
@@ -433,7 +435,7 @@
                         name: 'Program Studi'
                     },
                     {
-                        data: 'Fakultas',
+                        data: 'fakultas',
                         name: 'Fakultas'
                     },
                     {
@@ -443,6 +445,16 @@
                     {
                         data: 'thn_masuk',
                         name: 'Tahun Masuk'
+                    },
+                    {
+                        data: null,
+                        name: 'Similarity',
+                        render: function (data, type, full) {
+                            if (Object.keys(data).some(key => key === 'similarity')){
+                                return data.similarity;
+                            }
+                            else return '';
+                        }
                     },
                     {
                         data: null,

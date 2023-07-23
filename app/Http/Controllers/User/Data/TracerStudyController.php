@@ -978,6 +978,6 @@ class TracerStudyController extends Controller
             'question' => $question
         ];
 
-        return view('users.tracers.index')->with($params);
+        return view('users.tracers.index2')->with($params);
     }
 }

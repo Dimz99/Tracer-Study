@@ -234,10 +234,10 @@
                             <form id="changePasswordForm">
                                 <!-- Form -->
                                 <div class="row mb-4">
-                                    <label for="currentPasswordLabel" class="col-sm-3 col-form-label form-label">Password Sekarang</label>
+                                    <label for="currentPasswordLabel" class="col-sm-3 col-form-label form-label">Password Lama</label>
 
                                     <div class="col-sm-9">
-                                        <input type="password" class="form-control" name="currentPassword" id="currentPasswordLabel" placeholder="Masukkan Password Sekarang">
+                                        <input type="password" class="form-control" name="currentPassword" id="currentPasswordLabel" placeholder="Masukkan Password">
                                     </div>
                                 </div>
                                 <!-- End Form -->
@@ -248,18 +248,6 @@
 
                                     <div class="col-sm-9">
                                         <input type="password" class="form-control" name="newPassword" id="newPassword" placeholder="Masukkan password baru">
-                                    </div>
-                                </div>
-                                <!-- End Form -->
-
-                                <!-- Form -->
-                                <div class="row mb-4">
-                                    <label for="confirmNewPasswordLabel" class="col-sm-3 col-form-label form-label">Konfirmasi password baru</label>
-
-                                    <div class="col-sm-9">
-                                        <div class="mb-3">
-                                            <input type="password" class="form-control" name="confirmNewPassword" id="confirmNewPasswordLabel" placeholder="Konfirmasi password baru mu">
-                                        </div>
                                     </div>
                                 </div>
                                 <!-- End Form -->
