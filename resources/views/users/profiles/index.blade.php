@@ -116,7 +116,7 @@
                                             <!-- Radio Check -->
                                             <label class="form-control" for="jkRadio1">
                                                 <span class="form-check">
-                                                    <input type="radio" class="form-check-input" name="jk" id="jkRadio1" checked>
+                                                    <input type="radio" class="form-check-input" name="jk" id="jkRadio1" @if ($data[0]->gender == 'Laki - Laki') checked @endif>
                                                     <span class="form-check-label">Laki-Laki</span>
                                                 </span>
                                             </label>
@@ -125,7 +125,7 @@
                                             <!-- Radio Check -->
                                             <label class="form-control" for="jkRadio2">
                                                 <span class="form-check">
-                                                    <input type="radio" class="form-check-input" name="jk" id="jkRadio2">
+                                                    <input type="radio" class="form-check-input" name="jk" id="jkRadio2"@if ($data[0]->gender == 'Perempuan') checked @endif>
                                                     <span class="form-check-label">Perempuan</span>
                                                 </span>
                                             </label>

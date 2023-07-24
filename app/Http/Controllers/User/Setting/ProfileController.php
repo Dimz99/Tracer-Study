@@ -11,6 +11,7 @@ class ProfileController extends Controller
 {
     public function index()
     {
+        // dd(Alumni::get());
         $data = Alumni::where('userId', '=', Auth::user()->id)->get();
         $params = [
             'title' => 'Profil | Tracer Study - Universitas Islam Balitar',
