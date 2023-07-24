@@ -22,7 +22,6 @@
             <!-- End Row -->
         </div>
         <!-- End Page Header -->
-        {{$data}}
 
         <!-- Card -->
         <div class="card">
@@ -39,7 +38,7 @@
                             <label for="nameLabel" class="col-sm-3 col-form-label form-label">Nama Lengkap</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="nameLabel" placeholder="Nama Lengkap" value="Dimas Dwi" readonly>
+                                <input type="text" class="form-control" id="nameLabel" placeholder="Nama Lengkap" value="{{$data[0]->nama}}" readonly>
                             </div>
                         </div>
                         <!-- End Form -->
@@ -49,7 +48,7 @@
                             <label for="nimLabel" class="col-sm-3 col-form-label form-label">NIM</label>
 
                             <div class="col-sm-9">
-                                <input type="number" class="form-control" id="nimLabel" placeholder="Nomor Induk Mahasiswa" value="17104410041" readonly>
+                                <input type="number" class="form-control" id="nimLabel" placeholder="Nomor Induk Mahasiswa" value="{{$data[0]->NIM}}" readonly>
                             </div>
                         </div>
                         <!-- End Form -->
@@ -59,7 +58,7 @@
                             <label for="emailLabel" class="col-sm-3 col-form-label form-label">Email</label>
 
                             <div class="col-sm-9">
-                                <input type="email" class="form-control" id="emailLabel" placeholder="Email" value="mark@site.com" readonly>
+                                <input type="email" class="form-control" id="emailLabel" placeholder="Email" value="{{$data[0]->email}}" readonly>
                             </div>
                         </div>
                         <!-- End Form -->
@@ -69,7 +68,7 @@
                             <label for="phoneLabel" class="col-sm-3 col-form-label form-label">No Telepon</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="phoneLabel" placeholder="No Telepon" value="08712312312312" readonly>
+                                <input type="text" class="form-control" id="phoneLabel" placeholder="No Telepon" value="{{$data[0]->telepon}}" readonly>
                             </div>
                         </div>
                         <!-- End Form -->
@@ -81,8 +80,8 @@
 
                             <div class="col-sm-9">
                                 <div class="input-group input-group-sm-vertical">
-                                    <input type="number" class="form-control" id="firstYearLabel" placeholder="Tahun Masuk" value="2017" readonly>
-                                    <input type="number" class="form-control" id="lastYearLabel" placeholder="Tahun Keluar" value="2020" readonly>
+                                    <input type="number" class="form-control" id="firstYearLabel" placeholder="Tahun Masuk" value="{{$data[0]->thn_masuk}}" readonly>
+                                    <input type="number" class="form-control" id="lastYearLabel" placeholder="Tahun Keluar" value="{{$data[0]->thn_keluar}}" readonly>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +92,7 @@
                             <label for="prodiLabel" class="col-sm-3 col-form-label form-label">Program Studi</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="prodiLabel" placeholder="Program Studi" value="55201 - Teknik Informatika" readonly>
+                                <input type="text" class="form-control" id="prodiLabel" placeholder="Program Studi" value="{{$data[0]->prodi}}" readonly>
                             </div>
                         </div>
                         <!-- End Form -->
@@ -103,7 +102,7 @@
                             <label for="fakultasLabel" class="col-sm-3 col-form-label form-label">Fakultas</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="fakultasLabel" placeholder="Fakultas" value="Fakultas Teknologi Informasi" readonly>
+                                <input type="text" class="form-control" id="fakultasLabel" placeholder="Fakultas" value="{{$data[0]->fakultas}}" readonly>
                             </div>
                         </div>
                         <!-- End Form -->
@@ -113,7 +112,7 @@
                             <label for="addressLabel" class="col-sm-3 col-form-label form-label">Alamat</label>
 
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="addressLabel" placeholder="Alamat Saat ini" value="Blitar" readonly>
+                                <input type="text" class="form-control" id="addressLabel" placeholder="Alamat Saat ini" value="{{$data[0]->alamat}}" readonly>
                             </div>
                         </div>
                         <!-- End Form -->

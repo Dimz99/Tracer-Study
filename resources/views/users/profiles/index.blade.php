@@ -93,7 +93,7 @@
                                     <label for="nameLabel" class="col-sm-3 col-form-label form-label">Nama Lengkap</label>
 
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="nama" id="nameLabel" placeholder="Nama Lengkap" value="Dimas Dwi">
+                                        <input type="text" class="form-control" name="nama" id="nameLabel" placeholder="Nama Lengkap" value="{{$data[0]->nama}}">
                                     </div>
                                 </div>
                                 <!-- End Form -->
@@ -103,7 +103,7 @@
                                     <label for="nimLabel" class="col-sm-3 col-form-label form-label">NIM</label>
 
                                     <div class="col-sm-9">
-                                        <input type="number" class="form-control" name="nim" id="nimLabel" placeholder="Nomor Induk Mahasiswa" value="17104410041">
+                                        <input type="number" class="form-control" name="nim" id="nimLabel" placeholder="Nomor Induk Mahasiswa" value="{{$data[0]->NIM}}">
                                     </div>
                                 </div>
                                 <!-- End Form -->
@@ -140,8 +140,8 @@
 
                                     <div class="col-sm-9">
                                         <div class="input-group input-group-sm-vertical">
-                                            <input type="number" class="form-control" name="thn_masuk" id="firstYearLabel" placeholder="Tahun Masuk" value="2017">
-                                            <input type="number" class="form-control" name="thn_keluar" id="lastYearLabel" placeholder="Tahun Keluar" value="2020">
+                                            <input type="number" class="form-control" name="thn_masuk" id="firstYearLabel" placeholder="Tahun Masuk" value="{{$data[0]->thn_masuk}}">
+                                            <input type="number" class="form-control" name="thn_keluar" id="lastYearLabel" placeholder="Tahun Keluar" value="{{$data[0]->thn_keluar}}">
                                         </div>
                                     </div>
                                 </div>
@@ -156,8 +156,8 @@
                                         <div class="tom-select-custom">
                                             <select class="js-select form-select" id="prodiLabel">
                                                 <option value=" ">Pilih Program Studi</option>
-                                                <option value="55201">55201 - Teknik Informatika</option>
-                                                <option value="52201">56201 - Sistem Komputer</option>
+                                                <option value="55201">Teknik Informatika</option>
+                                                <option value="52201">Sistem Komputer</option>
                                             </select>
                                         </div>
                                         <!-- End Select -->
@@ -187,7 +187,7 @@
                                     <label for="emailLabel" class="col-sm-3 col-form-label form-label">Email</label>
 
                                     <div class="col-sm-9">
-                                        <input type="email" class="form-control" name="email" id="emailLabel" placeholder="Email" value="mark@site.com">
+                                        <input type="email" class="form-control" name="email" id="emailLabel" placeholder="Email" value="{{$data[0]->email}}">
                                     </div>
                                 </div>
                                 <!-- End Form -->
@@ -197,7 +197,7 @@
                                     <label for="phoneLabel" class="col-sm-3 col-form-label form-label">No Telepon</label>
 
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="phone" id="phoneLabel" placeholder="No Telepon" value="08712312312312">
+                                        <input type="text" class="form-control" name="phone" id="phoneLabel" placeholder="No Telepon" value="{{$data[0]->telepon}}">
                                     </div>
                                 </div>
                                 <!-- End Form -->
@@ -207,7 +207,7 @@
                                     <label for="addressLabel" class="col-sm-3 col-form-label form-label">Alamat</label>
 
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" name="alamat" id="addressLabel" placeholder="Alamat Saat ini" value="Blitar">
+                                        <input type="text" class="form-control" name="alamat" id="addressLabel" placeholder="Alamat Saat ini" value="{{$data[0]->alamat}}">
                                     </div>
                                 </div>
                                 <!-- End Form -->

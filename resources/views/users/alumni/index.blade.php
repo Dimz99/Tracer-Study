@@ -40,63 +40,6 @@
                 </div>
 
                 <div class="d-grid d-sm-flex justify-content-md-end align-items-sm-center gap-2">
-
-                    <!-- Dropdown -->
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-white btn-sm w-100" id="usersFilterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi-filter me-1"></i> Filter
-                        </button>
-
-                        <div class="dropdown-menu dropdown-menu-sm-end dropdown-card card-dropdown-filter-centered" aria-labelledby="usersFilterDropdown" style="min-width: 22rem;">
-                            <!-- Card -->
-                            <div class="card">
-                                <div class="card-header card-header-content-between">
-                                    <h5 class="card-header-title">Filter Alumni</h5>
-
-                                    <!-- Toggle Button -->
-                                    <button type="button" class="btn btn-ghost-secondary btn-icon btn-sm ms-2">
-                                        <i class="bi-x-lg"></i>
-                                    </button>
-                                    <!-- End Toggle Button -->
-                                </div>
-
-                                <div class="card-body">
-                                    <form>
-                                        <div class="row">
-                                            <div class="col-sm mb-4">
-                                                <small class="text-cap text-body">Program Studi</small>
-
-                                                <!-- Select -->
-                                                <div class="tom-select-custom">
-                                                    <select class="js-select js-datatable-filter form-select form-select-sm" data-target-column-index="4"
-                                                        data-hs-tom-select-options='{
-                                                            "searchInDropdown": false,
-                                                            "hideSearch": true,
-                                                            "dropdownWidth": "10rem",
-                                                            "allowEmptyOption": true
-                                                        }'>
-                                                        <option value="">Semua</option>
-                                                        <option value="Teknik Informatika">Teknik Informatika</option>
-                                                        <option value="Sistem Komputer">Sistem Komputer</option>
-                                                    </select>
-                                                </div>
-                                                <!-- End Select -->
-                                            </div>
-                                            <!-- End Col -->
-                                        </div>
-                                        <!-- End Row -->
-
-                                        <div class="d-grid">
-                                            <a class="btn btn-primary" href="javascript:;">Apply</a>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <!-- End Card -->
-                        </div>
-                    </div>
-                    <!-- End Dropdown -->
-
                     <!-- Dropdown -->
                     <div class="dropdown">
                         <button type="button" class="btn btn-white btn-sm dropdown-toggle w-100" id="usersExportDropdown"
@@ -154,34 +97,6 @@
                     </thead>
 
                     <tbody>
-                        {{-- <tr>
-                            <td class="pe-0">1</td>
-                            <td class="ps-0">17104410041</td>
-                            <td>Dimas Dwi</td>
-                            <td>Teknologi Informasi</td>
-                            <td>Teknik Informatika</td>
-                            <td>Laki</td>
-                            <td>2017</td>
-                            <td>
-                                <a class="btn btn-sm btn-info" href="/user/data/alumni/detail/1">
-                                    <i class="bi-eye"></i> Detail
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="pe-0">2</td>
-                            <td class="ps-0">17104410041</td>
-                            <td>Domas Dwi</td>
-                            <td>Teknologi Informasi</td>
-                            <td>Teknik Informatika</td>
-                            <td>Laki</td>
-                            <td>2017</td>
-                            <td>
-                                <a class="btn btn-sm btn-info" href="/user/data/alumni/detail/2">
-                                    <i class="bi-eye"></i> Detail
-                                </a>
-                            </td>
-                        </tr> --}}
 
                     </tbody>
                 </table>
@@ -389,12 +304,6 @@
                     },
                 ],
                 responsive: true,
-                processing: false,
-                serverSide: true,
-                paging: true,
-                searching: false,
-                start: 0,
-                length: 10,
                 ajax: function(data, callback) {
                     $.ajax({
                         url: '/user/data/alumni/ajax',
@@ -483,14 +392,6 @@
 
             $('#srcButton').click(function() {
                 datatable.ajax.reload()
-            });
-
-            $('.js-datatable-filter').on('change', function() {
-                var $this = $(this),
-                    elVal = $this.val(),
-                    targetColumnIndex = $this.data('target-column-index');
-
-                datatable.column(targetColumnIndex).search(elVal).draw();
             });
         });
     </script>

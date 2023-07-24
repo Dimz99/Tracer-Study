@@ -19,7 +19,7 @@ class LoginController extends Controller
 
     public function doLogin(Request $request)
     {
-        if (Auth::attempt(['username' => $request->nim, 'password' => $request->password])) {
+        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
             $request->session()->regenerate();
 
             return redirect()->intended('user/dashboard');

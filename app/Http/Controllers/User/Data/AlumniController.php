@@ -144,7 +144,7 @@ class AlumniController extends Controller
     public function detail(string $id)
     {
         $al = Alumni::where('id', '=', $id)->get();
-        dd($id);
+        // dd($id);
         $params = [
             'title' => 'Data Alumni | Tracer Study - Universitas Islam Balitar',
             'data' => $al

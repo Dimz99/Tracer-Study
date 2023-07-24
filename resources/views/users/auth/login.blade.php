@@ -32,8 +32,8 @@
                                 @endif
                             <!-- Form -->
                             <div class="mb-4">
-                                <label class="form-label" for="signinSrEmail">NIM</label>
-                                <input type="text" class="form-control form-control-lg" name="nim" id="signinSrEmail" tabindex="1" placeholder="Nomor Induk Mahasiswa" aria-label="Nomor Induk Mahasiswa" required>
+                                <label class="form-label" for="signinSrEmail">Username</label>
+                                <input type="text" class="form-control form-control-lg" name="username" id="signinSrEmail" tabindex="1" placeholder="Nomor Induk Mahasiswa" aria-label="Nomor Induk Mahasiswa" required>
                             </div>
                             <!-- End Form -->
 

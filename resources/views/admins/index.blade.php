@@ -29,8 +29,10 @@
         <div class="row row-cols-md-3 row-cols-sm-2 row-cols-1 g-3 mb-3">
             <div class="col">
                 <a href="javascript:;" class="card card-hover-shadow h-100">
+                    <div class="card-header bg-primary">
+                        <h4 class="mb-0 text-white text-cap">Alumni</h4>
+                    </div>
                     <div class="card-body">
-                        <h6 class="card-title text-uppercase">Alumni</h6>
                         <div class="d-fle-align-items-center">
                             <h2 class="display-4 mb-0">4.120</h2>
                         </div>
@@ -40,8 +42,10 @@
             <!-- End Col -->
             <div class="col">
                 <a href="javascript:;" class="card card-hover-shadow h-100">
+                    <div class="card-header bg-primary">
+                        <h4 class="mb-0 text-white text-cap">Fakultas</h4>
+                    </div>
                     <div class="card-body">
-                        <h6 class="card-title text-uppercase">Fakultas</h6>
                         <div class="d-fle-align-items-center">
                             <h2 class="display-4 mb-0">2</h2>
                         </div>
@@ -51,8 +55,10 @@
             <!-- End Col -->
             <div class="col">
                 <a href="javascript:;" class="card card-hover-shadow h-100">
+                    <div class="card-header bg-primary">
+                        <h4 class="mb-0 text-white text-cap">Tracer Study</h4>
+                    </div>
                     <div class="card-body">
-                        <h6 class="card-title text-uppercase">Tracer</h6>
                         <div class="d-fle-align-items-center">
                             <h2 class="display-4 mb-0">120</h2>
                         </div>
