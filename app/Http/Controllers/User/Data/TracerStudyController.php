@@ -21,31 +21,141 @@ class TracerStudyController extends Controller
                         'code' => 'aa1',
                         'question' => 'Alasan keuangan',
                         'type' => 'choice',
-                        'value' => ''
+                        'value' => '',
+                        'answers' => array(
+                            (object) [
+                                'name' => '(1) Sangat besar',
+                                'value' => 'Sangat besar'
+                            ],
+                            (object) [
+                                'name' => '(2) Besar',
+                                'value' => 'Besar'
+                            ],
+                            (object) [
+                                'name' => '(3) Cukup',
+                                'value' => 'Cukup'
+                            ],
+                            (object) [
+                                'name' => '(4) Kurang',
+                                'value' => 'Kurang'
+                            ],
+                            (object) [
+                                'name' => '(5) Tidak sama sekali',
+                                'value' => 'Tidak sama sekali'
+                            ],
+                        )
                     ],
                     (object) [
                         'code' => 'aa2',
                         'question' => 'Tidak lulus ujian (banyak mengulang)]',
                         'type' => 'choice',
-                        'value' => ''
+                        'value' => '',
+                        'answers' => array(
+                            (object) [
+                                'name' => '(1) Sangat besar',
+                                'value' => 'Sangat besar'
+                            ],
+                            (object) [
+                                'name' => '(2) Besar',
+                                'value' => 'Besar'
+                            ],
+                            (object) [
+                                'name' => '(3) Cukup',
+                                'value' => 'Cukup'
+                            ],
+                            (object) [
+                                'name' => '(4) Kurang',
+                                'value' => 'Kurang'
+                            ],
+                            (object) [
+                                'name' => '(5) Tidak sama sekali',
+                                'value' => 'Tidak sama sekali'
+                            ],
+                        )
                     ],
                     (object) [
                         'code' => 'aa3',
                         'question' => 'Tidak lulus ujian (Penulisan skripsi lambat)?',
                         'type' => 'choice',
-                        'value' => ''
+                        'value' => '',
+                        'answers' => array(
+                            (object) [
+                                'name' => '(1) Sangat besar',
+                                'value' => 'Sangat besar'
+                            ],
+                            (object) [
+                                'name' => '(2) Besar',
+                                'value' => 'Besar'
+                            ],
+                            (object) [
+                                'name' => '(3) Cukup',
+                                'value' => 'Cukup'
+                            ],
+                            (object) [
+                                'name' => '(4) Kurang',
+                                'value' => 'Kurang'
+                            ],
+                            (object) [
+                                'name' => '(5) Tidak sama sekali',
+                                'value' => 'Tidak sama sekali'
+                            ],
+                        )
                     ],
                     (object) [
                         'code' => 'aa4',
                         'question' => 'Tidak lulus ujian (Alasan keluarga)?',
                         'type' => 'choice',
-                        'value' => ''
+                        'value' => '',
+                        'answers' => array(
+                            (object) [
+                                'name' => '(1) Sangat besar',
+                                'value' => 'Sangat besar'
+                            ],
+                            (object) [
+                                'name' => '(2) Besar',
+                                'value' => 'Besar'
+                            ],
+                            (object) [
+                                'name' => '(3) Cukup',
+                                'value' => 'Cukup'
+                            ],
+                            (object) [
+                                'name' => '(4) Kurang',
+                                'value' => 'Kurang'
+                            ],
+                            (object) [
+                                'name' => '(5) Tidak sama sekali',
+                                'value' => 'Tidak sama sekali'
+                            ],
+                        )
                     ],
                     (object) [
                         'code' => 'aa5',
                         'question' => 'Tidak lulus ujian (Kesehatan)?',
                         'type' => 'choice',
-                        'value' => ''
+                        'value' => '',
+                        'answers' => array(
+                            (object) [
+                                'name' => '(1) Sangat besar',
+                                'value' => 'Sangat besar'
+                            ],
+                            (object) [
+                                'name' => '(2) Besar',
+                                'value' => 'Besar'
+                            ],
+                            (object) [
+                                'name' => '(3) Cukup',
+                                'value' => 'Cukup'
+                            ],
+                            (object) [
+                                'name' => '(4) Kurang',
+                                'value' => 'Kurang'
+                            ],
+                            (object) [
+                                'name' => '(5) Tidak sama sekali',
+                                'value' => 'Tidak sama sekali'
+                            ],
+                        )
                     ]
                 )
             ],
@@ -53,9 +163,26 @@ class TracerStudyController extends Controller
                 'code' => 'a2',
                 'title' => '',
                 'question' => 'Selama kuliah Anda tinggal ...... ',
-                'type' => 'choice',
+                'type' => 'choice_input',
                 'value' => '',
-                'sub_question' => []
+                'answers' => array(
+                    (object) [
+                        'code' => 'a21',
+                        'value' => 'Rumah sendiri/bersama orang tua',
+                    ],
+                    (object) [
+                        'code' => 'a22',
+                        'value' => 'Kos',
+                    ],
+                    (object) [
+                        'code' => 'a23',
+                        'value' => 'Pondok Pesantren',
+                    ],
+                    (object) [
+                        'code' => 'a24',
+                        'value' => 'Lainnya',
+                    ]
+                )
             ],
             (object) [
                 'code' => 'a3',
@@ -975,9 +1102,14 @@ class TracerStudyController extends Controller
 
         $params = [
             'title' => 'Tracer Study | Tracer Study - Universitas Islam Balitar',
-            'question' => $question
+            'questions' => $question
         ];
 
         return view('users.tracers.index2')->with($params);
+    }
+
+    public function store(Request $request)
+    {
+        dd($request->all());
     }
 }

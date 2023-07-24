@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/data/alumni/detail/{id}', [AlumniController::class, 'detail']);
 
         Route::get('/data/tracer-study', [TracerStudyController::class, 'index']);
+        Route::post('/data/tracer-study', [TracerStudyController::class, 'store']);
 
         Route::get('/profile', [ProfileController::class, 'index']);
     });

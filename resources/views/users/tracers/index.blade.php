@@ -32,7 +32,8 @@
                     </div>
                 </div>
 
-                <form>
+                <form action="/user/data/tracer-study" method="POST">
+                    @csrf
                     @foreach ($question as $item)
                         <div class="card mb-3">
                             <div class="card-body">
@@ -67,6 +68,7 @@
                                         </div>
                                         <!-- End Row -->
                                     @elseif ($item->code == 'a2')
+                                        <div id="{{ $item->code}}">
                                         <label for="formLabel{{$item->code}}" class="form-label">{{$item->question}}</label>
 
                                         <div class="mb-3">
@@ -114,6 +116,7 @@
                                             </div>
                                             <!-- End Form Radio -->
                                         </div>
+                                    </div>
                                     @elseif ($item->code == 'e1' || $item->code == 'e3')
                                         <label for="formLabel{{$item->code}}" class="form-label">{{$item->question}}</label>
 
@@ -863,7 +866,7 @@
                                         <p class="text-dark text-center">{{$item->title}}</p>
                                         @foreach ($item->sub_question as $items)
                                             @if ($item->type == 'choice')
-                                                <div class="row align-items-center">
+                                                <div class="row align-items-center" id="{{ $items->code }}">
                                                     <label for="formLabel{{$loop->index}}" class="col-lg-3 col-form-label form-label">{{$items->question}}</label>
 
                                                     <div class="col-lg-9">
@@ -1078,6 +1081,14 @@
     <script src="/assets/vendor/tom-select/dist/js/tom-select.complete.min.js"></script>
 
     <script>
+    $(function(){
+        $('input[name="a1"]').on("click", function() {
+            var value = $('input[name="a1"]:checked').val();
+            if(value == 'ya') {
+                $('#aa1').hide();
+            }
+        });
+    });
         (function() {
             window.onload = function() {
                 // INITIALIZATION OF SELECT
