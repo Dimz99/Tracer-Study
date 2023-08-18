@@ -157,7 +157,7 @@
                     </thead>
 
                     <tbody>
-                        <tr>
+                        {{-- <tr>
                             <td class="pe-0">1</td>
                             <td class="ps-0">Dimas Dwi</td>
                             <td>Teknologi Informasi</td>
@@ -174,7 +174,7 @@
                                     <i class="bi-eye"></i> Detail
                                 </a>
                             </td>
-                        </tr>
+                        </tr> --}}
                     </tbody>
                 </table>
             </div>

@@ -50,16 +50,16 @@
                                     @csrf
                                     <div class="modal-body">
                                         <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-12">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="nameLabel">Nama</label>
-                                                    <input type="text" id="nameLabel" class="form-control" name="name" placeholder="John Doe">
+                                                    <input type="text" id="nameLabel" class="form-control" name="name" placeholder="John Doe" required>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="nimLabel">NIM</label>
-                                                    <input type="text" id="nimLabel" class="form-control" name="nim" placeholder="xxxxxxxxxxx">
+                                                    <input type="text" id="nimLabel" class="form-control" name="nim" placeholder="xxxxxxxxxxx" required>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -70,11 +70,29 @@
                                                                 data-hs-tom-select-options='{
                                                                 "placeholder": "Pilih Angkatan...",
                                                                 "hideSearch": true
-                                                                }'>
+                                                                }' required>
                                                             <option value="">Pilih Angkatan...</option>
+                                                            <option value="2010">2010</option>
+                                                            <option value="2011">2011</option>
+                                                            <option value="2012">2012</option>
+                                                            <option value="2013">2013</option>
                                                             <option value="2014">2014</option>
                                                             <option value="2015">2015</option>
                                                             <option value="2016">2016</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="lulusanLabel">Lulusan</label>
+                                                    <div class="tom-select-custom">
+                                                        <select class="js-select form-select" autocomplete="off" name="thn_keluar" id="lulusanLabel"
+                                                                data-hs-tom-select-options='{
+                                                                "placeholder": "Pilih Lulusan...",
+                                                                "hideSearch": true
+                                                                }'>
+                                                            <option value="">Pilih Lulusan...</option>
                                                             <option value="2017">2017</option>
                                                             <option value="2018">2018</option>
                                                             <option value="2019">2019</option>
@@ -120,9 +138,9 @@
                                                                 data-hs-tom-select-options='{
                                                                 "placeholder": "Pilih Fakultas...",
                                                                 "hideSearch": true
-                                                                }'>
+                                                                }' required>
                                                             <option value="">Pilih Fakultas...</option>
-                                                            <option value="Teknologi Informasi">Teknologi Informasi</option>
+                                                            <option value="Teknologi Informasi" selected>Teknologi Informasi</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -135,7 +153,7 @@
                                                                 data-hs-tom-select-options='{
                                                                 "placeholder": "Pilih Program Studi...",
                                                                 "hideSearch": true
-                                                                }'>
+                                                                }' required>
                                                             <option value="">Pilih Program Studi...</option>
                                                             <option value="Teknik Informatika">Teknik Informatika</option>
                                                             <option value="Sistem Komputer">Sistem Komputer</option>
@@ -267,10 +285,6 @@
                 <table id="datatable"
                     class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
                     data-hs-datatables-options='{
-                     "columnDefs": [{
-                        "targets": [5],
-                        "orderable": false
-                      }],
                      "order": [],
                      "info": {
                        "totalQty": "#datatableWithPaginationInfoTotalQty"
@@ -289,8 +303,9 @@
                             <th>Nama</th>
                             <th>Program Studi</th>
                             <th>Fakultas</th>
-                            <th>JK</th>
+                            <th>Jenis Kelamin</th>
                             <th>Angkatan</th>
+                            <th>Lulusan</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -304,6 +319,7 @@
                             <td>{{ $value->prodi }}</td>
                             <td>{{ $value->gender }}</td>
                             <td>{{ $value->thn_masuk }}</td>
+                            <td>{{ $value->thn_keluar }}</td>
                             <td>
                                 <a class="btn btn-sm btn-info" href="/admin/manage/alumni/detail/1">
                                     <i class="bi-eye"></i> Detail

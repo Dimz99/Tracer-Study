@@ -24,40 +24,43 @@
 
         <!-- Header -->
         <div class="card card-body mb-3 mb-lg-5">
-            <div class="d-flex flex-md-row flex-column justify-content-md-between gap-2">
-                <div class="flex-fill mb-2 mb-md-0">
-                    <div class="d-flex gap-2">
-                        <!-- Search -->
-                        <div class="input-group input-group-merge">
-                            <div class="input-group-prepend input-group-text">
-                                <i class="bi-search"></i>
+            <form action="/user/data/alumni/detail/rabin" method="get">
+                <div class="d-flex flex-md-row flex-column justify-content-md-between gap-2">
+                    <div class="flex-fill mb-2 mb-md-0">
+                        <div class="d-flex gap-2">
+                            <!-- Search -->
+                            <div class="input-group input-group-merge">
+                                <div class="input-group-prepend input-group-text">
+                                    <i class="bi-search"></i>
+                                </div>
+                                <input type="search" id="searchRabin" name="search" class="form-control form-control-sm" placeholder="Cari Alumni format[NIM][nama]" aria-label="Cari Alumni format[NIM][nama]">
                             </div>
-                            <input type="search" id="searchRabin" class="form-control form-control-sm" placeholder="Cari Alumni" aria-label="Cari Alumni">
-                        </div>
-                        <a href="javascript:;" id="srcButton" class="btn btn-sm btn-primary">Rabin</a>
-                        <!-- End Search -->
-                    </div>
-                </div>
-
-                <div class="d-grid d-sm-flex justify-content-md-end align-items-sm-center gap-2">
-                    <!-- Dropdown -->
-                    <div class="dropdown">
-                        <button type="button" class="btn btn-white btn-sm dropdown-toggle w-100" id="usersExportDropdown"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi-download me-2"></i> Export
-                        </button>
-
-                        <div class="dropdown-menu dropdown-menu-sm-end" aria-labelledby="usersExportDropdown">
-                            <span class="dropdown-header">Download options</span>
-                            <a id="export-excel" class="dropdown-item" href="javascript:;">
-                                <img class="avatar avatar-xss avatar-4x3 me-2" src="/assets/svg/brands/excel-icon.svg" alt="Image Description">
-                                Excel
-                            </a>
+                            <a href="javascript:;" id="srcButton" class="btn btn-sm btn-primary">Rabin</a>
+                            <button type="submit" class="btn btn-sm btn-primary d-none">Detail</button>
+                            <!-- End Search -->
                         </div>
                     </div>
-                    <!-- End Dropdown -->
+
+                    <div class="d-grid d-sm-flex justify-content-md-end align-items-sm-center gap-2">
+                        <!-- Dropdown -->
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-white btn-sm dropdown-toggle w-100" id="usersExportDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi-download me-2"></i> Export
+                            </button>
+
+                            <div class="dropdown-menu dropdown-menu-sm-end" aria-labelledby="usersExportDropdown">
+                                <span class="dropdown-header">Download options</span>
+                                <a id="export-excel" class="dropdown-item" href="javascript:;">
+                                    <img class="avatar avatar-xss avatar-4x3 me-2" src="/assets/svg/brands/excel-icon.svg" alt="Image Description">
+                                    Excel
+                                </a>
+                            </div>
+                        </div>
+                        <!-- End Dropdown -->
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
         <!-- End Header -->
 
@@ -67,10 +70,6 @@
             <div class="table-responsive datatable-custom">
                 <table id="datatable" class="table table-lg table-borderless table-thead-bordered table-nowrap table-align-middle card-table"
                     data-hs-datatables-options='{
-                     "columnDefs": [{
-                        "targets": [5],
-                        "orderable": false
-                      }],
                      "order": [],
                      "info": {
                        "totalQty": "#datatableWithPaginationInfoTotalQty"
@@ -89,8 +88,9 @@
                             <th>Nama</th>
                             <th>Program Studi</th>
                             <th>Fakultas</th>
-                            <th>JK</th>
+                            <th>Jenis Kelamin</th>
                             <th>Angkatan</th>
+                            <th>Lulusan</th>
                             <th>Kecocokan</th>
                             <th>Action</th>
                         </tr>
@@ -118,6 +118,7 @@
                                         "hideSearch": true,
                                         "dropdownWidth": "auto"
                                     }'>
+                                    <option value="5">5</option>
                                     <option value="10" selected>10</option>
                                     <option value="25">25</option>
                                     <option value="50">50</option>
@@ -286,6 +287,12 @@
     <script src="{{ asset('assets/vendor/datatables.net.extensions/select/select.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+<script src="/assets/vendor/jszip/dist/jszip.min.js"></script>
+<script src="/assets/vendor/pdfmake/build/pdfmake.min.js"></script>
+<script src="/assets/vendor/pdfmake/build/vfs_fonts.js"></script>
+<script src="/assets/vendor/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="/assets/vendor/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="/assets/vendor/datatables.net-buttons/js/buttons.colVis.min.js"></script>
 
     <script>
         $(document).on('ready', function() {
@@ -356,11 +363,15 @@
                         name: 'Tahun Masuk'
                     },
                     {
+                        data: 'thn_keluar',
+                        name: 'Tahun Keluar'
+                    },
+                    {
                         data: null,
                         name: 'Similarity',
                         render: function (data, type, full) {
                             if (Object.keys(data).some(key => key === 'similarity')){
-                                return data.similarity;
+                                return data.similarity + '%';
                             }
                             else return '';
                         }

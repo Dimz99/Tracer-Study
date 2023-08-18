@@ -35,7 +35,7 @@
                     </div>
                     <div class="card-body">
                         <div class="d-fle-align-items-center">
-                            <h2 class="display-4 mb-0">{{$total_alumni}}</h2>
+                            <h2 class="display-4 mb-0">50</h2>
                         </div>
                     </div>
                 </a>
@@ -80,19 +80,19 @@
                         <div class="form-group row mb-0">
                             <label class="col-sm-3 col-form-label">Nama</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control-plaintext" value="Dimas Dwi Ichtiarto" readonly>
+                                <input type="text" class="form-control-plaintext" value="{{ ucwords(strtolower(Auth::user()->name)) }}" readonly>
                             </div>
                         </div>
                         <div class="form-group row mb-0">
                             <label class="col-sm-3 col-form-label">NIM</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control-plaintext" value="17104410041" readonly>
+                                <input type="text" class="form-control-plaintext" value="{{ Auth::user()->username }}" readonly>
                             </div>
                         </div>
                         <div class="form-group row mb-0">
                             <label class="col-sm-3 col-form-label">Role</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control-plaintext" value="Mahasiswa" readonly>
+                                <input type="text" class="form-control-plaintext" value="{{ ucwords(Auth::user()->role) }}" readonly>
                             </div>
                         </div>
                     </div>
@@ -109,8 +109,6 @@
 @push('js')
     <script>
         $(document).on('ready', function() {
-            // INITIALIZATION OF CHARTJS
-            // =======================================================
         });
     </script>
 @endpush

@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/data/alumni', [AlumniController::class, 'index']);
         Route::get('/data/alumni/ajax', [AlumniController::class, 'getIndexAjax']);
+        Route::get('/data/alumni/detail/rabin', [AlumniController::class, 'detailRabin']);
         Route::get('/data/alumni/detail/{id}', [AlumniController::class, 'detail']);
 
         Route::get('/data/tracer-study', [TracerStudyController::class, 'index']);
@@ -45,20 +46,22 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-Route::prefix('admin')->group(function () {
-    Route::get('/login', [AuthLoginController::class, 'index']);
-    Route::post('/login', [AuthLoginController::class, 'doLogin']);
+Route::get('/admin/login', [AuthLoginController::class, 'index'])->name('admin_login');
+Route::post('/admin/login', [AuthLoginController::class, 'doLogin']);
 
-    Route::get('/dashboard', [AdminDashboardController::class, 'index']);
+Route::middleware('auth')->group(function () {
+    Route::prefix('admin')->group(function () {
+        Route::get('/dashboard', [AdminDashboardController::class, 'index']);
 
-    Route::get('/manage/alumni', [ManageAlumniController::class, 'index']);
-    Route::post('/manage/alumni', [ManageAlumniController::class, 'store']);
-    Route::get('/manage/alumni/detail/{id}', [ManageAlumniController::class, 'detail']);
+        Route::get('/manage/alumni', [ManageAlumniController::class, 'index']);
+        Route::post('/manage/alumni', [ManageAlumniController::class, 'store']);
+        Route::get('/manage/alumni/detail/{id}', [ManageAlumniController::class, 'detail']);
 
-    Route::get('/report/tracer-study', [TracerController::class, 'index']);
-    Route::get('/report/tracer-study/detail/{id}', [TracerController::class, 'detail']);
+        Route::get('/report/tracer-study', [TracerController::class, 'index']);
+        Route::get('/report/tracer-study/detail/{id}', [TracerController::class, 'detail']);
 
-    Route::get('/report/statistik', [StatisticController::class, 'index']);
+        Route::get('/report/statistik', [StatisticController::class, 'index']);
 
-    Route::get('/profile', [SettingProfileController::class, 'index']);
+        Route::get('/profile', [SettingProfileController::class, 'index']);
+    });
 });

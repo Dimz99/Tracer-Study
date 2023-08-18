@@ -18,10 +18,12 @@
                                     <a class="navbar-dropdown-account-wrapper" href="javascript:;"
                                         id="accountNavbarDropdown" data-bs-toggle="dropdown" aria-expanded="false"
                                         data-bs-auto-close="outside" data-bs-dropdown-animation>
-                                        <div class="avatar avatar-sm avatar-circle">
-                                            <img class="avatar-img" src="/assets/img/160x160/img1.jpg"
-                                                alt="Image Description">
-                                            <span class="avatar-status avatar-sm-status avatar-status-success"></span>
+                                        <div class="avatar avatar-sm avatar-circle avatar-light">
+                                            <span class="avatar-initials">
+                                                @php
+                                                    echo substr(Auth::user()->name,  0, 1)
+                                                @endphp
+                                            </span>
                                         </div>
                                     </a>
 
@@ -29,13 +31,16 @@
                                         aria-labelledby="accountNavbarDropdown" style="width: 16rem;">
                                         <div class="dropdown-item-text">
                                             <div class="d-flex align-items-center">
-                                                <div class="avatar avatar-sm avatar-circle">
-                                                    <img class="avatar-img" src="/assets/img/160x160/img1.jpg"
-                                                        alt="Image Description">
+                                                <div class="avatar avatar-sm avatar-circle avatar-dark">
+                                                    <span class="avatar-initials">
+                                                        @php
+                                                            echo substr(Auth::user()->name,  0, 1)
+                                                        @endphp
+                                                    </span>
                                                 </div>
                                                 <div class="flex-grow-1 ms-3">
-                                                    <h5 class="mb-0">Mark Williams</h5>
-                                                    <p class="card-text text-body">17104410041</p>
+                                                    <h5 class="mb-0">{{ Auth::user()->name }}</h5>
+                                                    <p class="card-text text-body">{{ Auth::user()->username }}</p>
                                                 </div>
                                             </div>
                                         </div>

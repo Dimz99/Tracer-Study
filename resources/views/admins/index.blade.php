@@ -34,7 +34,7 @@
                     </div>
                     <div class="card-body">
                         <div class="d-fle-align-items-center">
-                            <h2 class="display-4 mb-0">4.120</h2>
+                            <h2 class="display-4 mb-0">{{$total_alumni}}</h2>
                         </div>
                     </div>
                 </a>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="card-body">
                         <div class="d-fle-align-items-center">
-                            <h2 class="display-4 mb-0">120</h2>
+                            <h2 class="display-4 mb-0">0</h2>
                         </div>
                     </div>
                 </a>
@@ -84,7 +84,7 @@
                                         "data": {
                                             "labels": ["Mengisi", "Belum Mengisi"],
                                             "datasets": [{
-                                                "data": [200, 100],
+                                                "data": [0, 100],
                                                 "backgroundColor": ["#00c9a7", "#f5ca99"],
                                                 "borderWidth": 1,
                                                 "hoverBorderColor": "#fff"
@@ -137,10 +137,10 @@
                                 data-hs-chartjs-options='{
                                         "type": "bar",
                                         "data": {
-                                            "labels": ["2018", "2019", "2020", "2021", "2022"],
+                                            "labels": ["2017", "2018", "2019", "2020", "2021"],
                                             "datasets": [
                                                 {
-                                                    "data": [200, 300, 290, 350, 150],
+                                                    "data": [{{$count_2017}}, {{$count_2018}}, 0, 0, 0],
                                                     "backgroundColor": "#377dff",
                                                     "hoverBackgroundColor": "#377dff",
                                                     "borderColor": "#377dff",
@@ -164,7 +164,9 @@
                                                     "fontFamily": "Open Sans, sans-serif",
                                                     "padding": 10,
                                                     "postfix": "$"
-                                                }
+                                                },
+                                                "suggestedMin": 0,
+                                                "suggestedMax": 100
                                             },
                                             "x": {
                                                 "grid": {

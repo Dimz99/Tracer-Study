@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,9 +21,15 @@ class LoginController extends Controller
     public function doLogin(Request $request)
     {
         if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
-            $request->session()->regenerate();
+            $user = User::where([['id',  Auth::user()->id], ['role', 'mahasiswa']])->first();
+            if (!$user) return redirect()->back()->with('failed', 'Username atau password salah');
+
+            if ($user->role == 'mahasiswa') return redirect()->intended('user/dashboard');
 
             return redirect()->intended('user/dashboard');
+            // $request->session()->regenerate();
+
+            // return redirect()->intended('user/dashboard');
         }
 
         return redirect()->back()->with('alert-danger', 'username atau password salah');

@@ -36,6 +36,7 @@ class AlumniController extends Controller
         $alumni->nama = $user->name;
         $alumni->nim = $user->username;
         $alumni->thn_masuk = $request->thn_masuk;
+        $alumni->thn_keluar = $request->thn_keluar;
         $alumni->prodi = $request->prodi;
         $alumni->fakultas = $request->fakultas;
         $alumni->gender = $request->gender;

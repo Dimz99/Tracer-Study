@@ -34,8 +34,8 @@
                                                         alt="Image Description">
                                                 </div>
                                                 <div class="flex-grow-1 ms-3">
-                                                    <h5 class="mb-0">Mark Williams</h5>
-                                                    <p class="card-text text-body">superadmin</p>
+                                                    <h5 class="mb-0">{{ Auth::user()->name }}</h5>
+                                                    <p class="card-text text-body">{{ Auth::user()->role }}</p>
                                                 </div>
                                             </div>
                                         </div>
