@@ -36,7 +36,7 @@
                                 <input type="search" id="searchRabin" name="search" class="form-control form-control-sm" placeholder="Cari Alumni format[NIM][nama]" aria-label="Cari Alumni format[NIM][nama]">
                             </div>
                             <a href="javascript:;" id="srcButton" class="btn btn-sm btn-primary">Rabin</a>
-                            <button type="submit" class="btn btn-sm btn-primary d-none">Detail</button>
+                            <button type="submit" class="btn btn-sm btn-primary d- ">Detail</button>
                             <!-- End Search -->
                         </div>
                     </div>

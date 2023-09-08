@@ -141,6 +141,13 @@
                                     <td>{{$item['kgram']}}</td>
                                     <td>{{count($item['kgrams'])}}</td>
                                 </tr>
+                                    {{-- @foreach ($item['kgrams'] as $item)
+                                    <tr>
+                                        <td>
+                                                {{$item}}
+                                        </td>
+                                    </tr>
+                                    @endforeach --}}
                                 @endforeach
                             </tbody>
                         </table>
@@ -157,33 +164,53 @@
                     </div>
                     <!-- Table -->
                     <div class="table-responsive">
-                        <table id="" class="table table-thead-bordered table-wrap table-align-middle card-table">
+                        <table id="" class="table table-bordered table-wrap table-align-middle card-table">
                             <thead class="thead-light">
                                 <tr>
                                     <th>Nama</th>
                                     <th>K-Gram</th>
+                                    <th>Proses</th>
                                     <th>Hash</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 <tr>
-                                    <td>{{$data_i['inputan']}}</td>
-                                    <td>
-                                        @foreach ($data_i['inputan_kgrams'] as $items)
-                                        <span class="d-block">
-                                            {{$items}}
-                                        </span>
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach ($data_i['inputan_hash'] as $items)
-                                        <span class="d-block">
-                                            {{$items}}
-                                        </span>
-                                        @endforeach
-                                    </td>
+                                    <td rowspan="{{count($data_i['inputan_kgrams']) + 1}}">{{$data_i['inputan']}}</td>
                                 </tr>
+                                 @for ($i = 0; $i < count($data_i['inputan_kgrams']); $i++)
+                                    <tr>
+                                        <td>{{$data_i['inputan_kgrams'][$i]}}</td>
+                                        <td>
+                                            <?php
+                                                $n = strlen($data_i['inputan_kgrams'][$i]);
+                                                $hash = null;
+
+                                                for ($j = 0; $j < $n; $j++) {
+                                                    echo 'ascii(' . $data_i['inputan_kgrams'][$i][$j] . ')' . ' * ' . 10 . '^' . $n - $j - 1;
+                                                    if ($j < $n-1) {
+                                                        echo ' + ';
+                                                    }
+                                                }
+                                                echo '<br>';
+                                                for ($j = 0; $j < $n; $j++) {
+                                                    echo ord($data_i['inputan_kgrams'][$i][$j]) . ' * ' . pow(10, $n - $j - 1);
+                                                    if ($j < $n-1) {
+                                                        echo ' + ';
+                                                    }
+                                                }
+                                                echo '<br>';
+                                                for ($j = 0; $j < $n; $j++) {
+                                                    echo ord($data_i['inputan_kgrams'][$i][$j]) * pow(10, $n - $j - 1);
+                                                    if ($j < $n-1) {
+                                                        echo ' + ';
+                                                    }
+                                                }
+                                            ?>
+                                        </td>
+                                        <td>{{$data_i['inputan_hash'][$i]}}</td>
+                                    </tr>
+                                @endfor
                             </tbody>
                         </table>
                     </div>
@@ -193,38 +220,86 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="mb-0">Tabel Hashing Data Alumni</h5>
+                        {{-- <h5 class="mb-0">Tabel Hashing Data Alumni</h5> --}}
+                        <div class="row justify-content-between align-items-center flex-grow-1">
+                            <div class="col-md">
+                                <h4 class="card-header-title">Tabel Hashing Data Alumni</h4>
+                            </div>
+
+                            <div class="col-auto">
+                                <!-- Dropdown -->
+                                <div class="dropdown">
+                            <button type="button" class="btn btn-white btn-sm dropdown-toggle w-100" id="usersExportDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi-download me-2"></i> Export
+                            </button>
+
+                            <div class="dropdown-menu dropdown-menu-sm-end" aria-labelledby="usersExportDropdown">
+                                <span class="dropdown-header">Download options</span>
+                                <a id="export-excel" class="dropdown-item" href="javascript:;">
+                                    <img class="avatar avatar-xss avatar-4x3 me-2" src="/assets/svg/brands/excel-icon.svg" alt="Image Description">
+                                    Excel
+                                </a>
+                            </div>
+                        </div>
+                                <!-- End Dropdown -->
+                            </div>
+                        </div>
                     </div>
                     <!-- Table -->
-                    <div class="table-responsive">
-                        <table id="" class="table table-lg table-thead-bordered table-wrap table-align-middle card-table">
+                    <div class="table-responsive datatable-custom">
+                        <table id="exportDatatable" class="js-datatable table table-lg table-bordered table-wrap card-table"
+                            data-hs-datatables-options='{
+                                "order": []
+                            }'>
                             <thead class="thead-light">
                                 <tr>
-                                    <th class="pe-0">No</th>
+                                    {{-- <th class="pe-0">Nama</th> --}}
                                     <th>K-Gram</th>
+                                    <th>Proces</th>
                                     <th>Hash</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 @foreach ($data as $item)
-                                <tr>
-                                    <td>{{$item['id']}}</td>
-                                    <td>
-                                        @foreach ($item['kgrams'] as $items)
-                                        <span class="d-block">
-                                            {{$items}}
-                                        </span>
-                                        @endforeach
-                                    </td>
-                                    <td>
-                                        @foreach ($item['hashings'] as $items)
-                                        <span class="d-block">
-                                            {{$items}}
-                                        </span>
-                                        @endforeach
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="3">Alumni {{$loop->index+1}}</td>
+                                    </tr>
+                                    @for ($i = 0; $i < count($item['kgrams']); $i++)
+                                    <tr>
+                                            {{-- <td colspan="3">Alumni {{$loop->index+1}}</td> --}}
+                                            <td>{{$item['kgrams'][$i]}}</td>
+                                            <td>
+                                                <?php
+                                                    $n = strlen($item['kgrams'][$i]);
+                                                    $hash = null;
+
+                                                    for ($j = 0; $j < $n; $j++) {
+                                                        echo 'ascii<sub>(' . $item['kgrams'][$i][$j] . ')</sub>' . ' * ' . 10 . '<sup>' . $n - $j - 1 . '</sup>';
+                                                        if ($j < $n-1) {
+                                                            echo ' + ';
+                                                        }
+                                                    }
+                                                    echo '<br>';
+                                                    for ($j = 0; $j < $n; $j++) {
+                                                        echo ord($item['kgrams'][$i][$j]) . ' * ' . pow(10, $n - $j - 1);
+                                                        if ($j < $n-1) {
+                                                            echo ' + ';
+                                                        }
+                                                    }
+                                                    echo '<br>';
+                                                    for ($j = 0; $j < $n; $j++) {
+                                                        echo ord($item['kgrams'][$i][$j]) * pow(10, $n - $j - 1);
+                                                        if ($j < $n-1) {
+                                                            echo ' + ';
+                                                        }
+                                                    }
+                                                ?>
+                                            </td>
+                                            <td>{{$item['hashings'][$i]}}</td>
+                                        </tr>
+                                    @endfor
                                 @endforeach
                             </tbody>
                         </table>
@@ -347,12 +422,39 @@
 
 @push('js')
     <script src="{{ asset('assets/vendor/tom-select/dist/js/tom-select.complete.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatables/media/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/jszip/dist/jszip.min.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/pdfmake/build/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/pdfmake/build/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('/assets/vendor/datatables.net-buttons/js/buttons.colVis.min.js') }}"></script>
 
     <script>
         $(document).on('ready', function() {
             // INITIALIZATION OF SELECT2
             // =======================================================
             HSCore.components.HSTomSelect.init('.js-select')
+
+            // INITIALIZATION OF DATATABLES
+            // =======================================================
+            HSCore.components.HSDatatables.init($('#exportDatatable'),{
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'excel',
+                        className: 'd-none'
+                    },
+                ],
+                responsive: true,
+            })
+            const datatable = HSCore.components.HSDatatables.getItem(0)
+
+            $('#export-excel').click(function() {
+                datatable.button('.buttons-excel').trigger()
+            });
         });
     </script>
 @endpush
