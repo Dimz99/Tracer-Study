@@ -36,7 +36,7 @@
                                 <input type="search" id="searchRabin" name="search" class="form-control form-control-sm" placeholder="Cari Alumni format[NIM][nama]" aria-label="Cari Alumni format[NIM][nama]">
                             </div>
                             <a href="javascript:;" id="srcButton" class="btn btn-sm btn-primary">Rabin</a>
-                            <button type="submit" class="btn btn-sm btn-primary d- ">Detail</button>
+                            <button type="submit" class="btn btn-sm btn-primary d-none">Detail</button>
                             <!-- End Search -->
                         </div>
                     </div>
@@ -148,135 +148,6 @@
             <!-- End Footer -->
         </div>
         <!-- End Card -->
-
-        <?php
-
-            // Fungsi untuk melakukan preprocessing
-            // function preprocess($text) {
-            //     // Mengubah semua karakter menjadi huruf kecil dan menghapus karakter non-alfabet
-            //     $text = strtolower(preg_replace('/[^a-zA-Z0-9]/', '', $text));
-            //     return $text;
-            // }
-
-            // // Fungsi untuk melakukan tokenizing menjadi k-gram
-            // function tokenize($text, $k) {
-            //     $tokens = [];
-            //     $n = strlen($text);
-
-            //     // Memisahkan teks menjadi k-gram
-            //     for ($i = 0; $i < $n - $k + 1; $i++) {
-            //         $tokens[] = substr($text, $i, $k);
-            //     }
-
-            //     return $tokens;
-            // }
-
-            // // Fungsi untuk menghitung nilai hash menggunakan rolling hash
-            // function rollingHash($token) {
-            //     $hash = 0;
-            //     $n = strlen($token);
-            //     $prime = 11; // Bilangan prima untuk menghindari kolisi hash
-
-            //     for ($i = 0; $i < $n; $i++) {
-            //         $hash += ord($token[$i]) * pow($prime, $n - $i - 1);
-            //     }
-
-            //     return $hash;
-            // }
-
-            // // Fungsi untuk menghitung fingerprint dari token
-            // function fingerprint($token) {
-            //     return rollingHash($token);
-            // }
-
-            // // Fungsi untuk menghitung kesamaan antara dua set fingerprint
-            // function similarity($fingerprint1, $fingerprint2) {
-            //     $intersection = count(array_intersect($fingerprint1, $fingerprint2));
-            //     $union = count(array_unique(array_merge($fingerprint1, $fingerprint2)));
-            //     $similarity = $intersection / $union * 100;
-            //     echo (count($fingerprint1) + count($fingerprint2));
-            //     return $similarity;
-            // }
-
-            // // Data input
-            // $data_input = "17104410041 Dimas Dwi 2017";
-            // $data_sample = "17104410041dimasdwiichtiartoteknologiinfomasiteknikinformatikalakilaki2017";
-
-            // // Preprocessing
-            // $data_input = preprocess($data_input);
-            // $data_sample = preprocess($data_sample);
-
-            // // Tokenizing
-            // $k = 3;
-            // $tokens_input = tokenize($data_input, $k);
-            // $tokens_sample = tokenize($data_sample, $k);
-
-            // // Hashing (Rolling Hash)
-            // $fingerprints_input = [];
-            // $fingerprints_sample = [];
-
-            // foreach ($tokens_input as $token) {
-            //     $fingerprints_input[] = fingerprint($token);
-            // }
-
-            // foreach ($tokens_sample as $token) {
-            //     $fingerprints_sample[] = fingerprint($token);
-            // }
-
-            // // Similarity
-            // $similarity = similarity($fingerprints_input, $fingerprints_sample);
-
-            // // Tampilkan hasil
-            // echo "Data Input: " . $data_input . "\n";
-            // echo "Data Sample: " . $data_sample . "\n";
-            // echo "Token: " . json_encode($tokens_input) . "\n";
-            // echo "Token: " . json_encode($fingerprints_input) . "\n";
-            // echo "Similarity: " . $similarity . "\n";
-
-            // function calculateHash($str, $base, $length) {
-            //     $hash = 0;
-            //     for ($i = 0; $i < $length; $i++) {
-            //         $hash += ord($str[$i]) * pow($base, $length - 1 - $i);
-            //     }
-            //     return $hash;
-            // }
-
-            // function updateHash($prevHash, $prevChar, $newChar, $k, $base) {
-            //     $newHash = $prevHash - ord($prevChar);
-            //     $newHash /= $base;
-            //     $newHash += ord($newChar) * pow($base, $k - 1);
-            //     return $newHash;
-            // }
-
-            // function tokenizeAndRollingHash($str, $k, $base) {
-            //     $result = [];
-
-            //     $length = strlen($str);
-            //     if ($length < $k) {
-            //         return $result;
-            //     }
-
-            //     $currentHash = calculateHash(substr($str, 0, $k), $base, $k);
-
-            //     for ($i = 0; $i <= $length - $k; $i++) {
-            //         $kgram = substr($str, $i, $k);
-            //         $result[] = '{' . $currentHash . '}';
-            //         if ($i + $k < $length) {
-            //             $currentHash = updateHash($currentHash, $str[$i], $str[$i + $k], $k, $base);
-            //         }
-            //     }
-
-            //     return $result;
-            // }
-
-            // // Example usage:
-            // $string = "17104410041dimasdwi2017";
-            // $k = 3;
-            // $base = 11;
-
-            // $tokens = tokenizeAndRollingHash($string, $k, $base);
-            // echo implode(" ", $tokens);
-        ?>
     </div>
     <!-- End Content -->
 @endsection
@@ -287,12 +158,12 @@
     <script src="{{ asset('assets/vendor/datatables.net.extensions/select/select.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-<script src="/assets/vendor/jszip/dist/jszip.min.js"></script>
-<script src="/assets/vendor/pdfmake/build/pdfmake.min.js"></script>
-<script src="/assets/vendor/pdfmake/build/vfs_fonts.js"></script>
-<script src="/assets/vendor/datatables.net-buttons/js/buttons.html5.min.js"></script>
-<script src="/assets/vendor/datatables.net-buttons/js/buttons.print.min.js"></script>
-<script src="/assets/vendor/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="/assets/vendor/jszip/dist/jszip.min.js"></script>
+    <script src="/assets/vendor/pdfmake/build/pdfmake.min.js"></script>
+    <script src="/assets/vendor/pdfmake/build/vfs_fonts.js"></script>
+    <script src="/assets/vendor/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/assets/vendor/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="/assets/vendor/datatables.net-buttons/js/buttons.colVis.min.js"></script>
 
     <script>
         $(document).on('ready', function() {
@@ -329,7 +200,7 @@
                         },
                         success: function(res) {
                             callback(res);
-                            console.log(res);
+                            // console.log(res);
                         }
                     })
                 },
@@ -403,6 +274,15 @@
 
             $('#srcButton').click(function() {
                 datatable.ajax.reload()
+            });
+
+            $('input[name=search]').keypress(function(e) {
+                var key = e.which;
+                if(key == 13)  // the enter key code
+                {
+                    e.preventDefault();
+                    datatable.ajax.reload()
+                }
             });
         });
     </script>

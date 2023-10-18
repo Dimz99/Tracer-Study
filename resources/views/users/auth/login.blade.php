@@ -30,6 +30,7 @@
                                         {{ session('alert-danger') }}
                                     </div>
                                 @endif
+                            </div>
                             <!-- Form -->
                             <div class="mb-4">
                                 <label class="form-label" for="signinSrEmail">Username</label>
@@ -57,6 +58,7 @@
 
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-primary btn-lg">Log in</button>
+                                <a href="/login/admin" class="link text-center mt-3">Login Admin</a>
                             </div>
                         </form>
                         <!-- End Form -->
