@@ -58,7 +58,7 @@
 
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-primary btn-lg">Log in</button>
-                                <a href="/login/admin" class="link text-center mt-3">Login Admin</a>
+                                <a href="/admin/login" class="link text-center mt-3">Login Admin</a>
                             </div>
                         </form>
                         <!-- End Form -->
